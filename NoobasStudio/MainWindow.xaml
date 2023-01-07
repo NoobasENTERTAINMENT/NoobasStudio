@@ -22,16 +22,17 @@
             <RowDefinition Height="52*" />
         </Grid.RowDefinitions>
         <views:MenuView Grid.Row="0" DataContext="{Binding CurrentViewModel}" />
-        <views:SubsView Grid.Row="0" />
-        <views:TranslationFieldView Grid.Row="1" />
+        <views:SubsView Grid.Row="0" DataContext="{Binding CurrentViewModel}" />
+        <views:TranslationFieldView Grid.Row="1" DataContext="{Binding CurrentViewModel}" />
         <Button
             Width="60"
             Height="60"
             Margin="15"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
-            Click="Button_Click"
-            Style="{StaticResource MaterialDesignIconButton}">
+            Command="{Binding CloseCommand}"
+            Style="{StaticResource MaterialDesignIconButton}"
+                Cursor="Hand">
             <materialDesign:PackIcon
                 Width="40"
                 Height="40"

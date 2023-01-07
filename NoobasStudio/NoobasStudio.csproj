@@ -66,12 +66,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\CloseCommand.cs" />
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\LoadFileCommand.cs" />
     <Compile Include="Commands\LoadSaveCommand.cs" />
     <Compile Include="Models\Subs.cs" />
+    <Compile Include="ViewModels\GlobalViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>

@@ -1,4 +1,5 @@
 ﻿using NoobasStudio.Commands;
+using NoobasStudio.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +9,23 @@ using System.Windows.Input;
 
 namespace NoobasStudio.ViewModels
 {
-    public class MenuViewModel : ViewModelBase
+    public class GlobalViewModel : ViewModelBase
     {
+        readonly Subs subs = new Subs();
         public ICommand LoadSaveCommand { get; }
         public ICommand LoadFileCommand { get; }
-        public MenuViewModel()
+
+        private List<string> _subs = new List<string>() { "1", "2", "3" };
+        public List<string> Subs
+        {
+            get => _subs;
+            set 
+            { 
+                _subs = value;
+                OnPropertyChanged();
+            }
+        }
+        public GlobalViewModel()
         {
             LoadSaveCommand = new LoadSaveCommand();
             LoadFileCommand = new LoadFileCommand();

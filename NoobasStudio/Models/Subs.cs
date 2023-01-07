@@ -12,7 +12,7 @@ namespace NoobasStudio.Models
 {
     public class Subs
     {
-        public string text { get; set; }
+        public string[] text { get; set; }
         public void LoadSubs()
         {
             try
@@ -24,6 +24,7 @@ namespace NoobasStudio.Models
                 string FilePath = ofd.FileName;
 
                 var file = new FileInfo(FilePath);
+
                 if (file.Length == 0) 
                 {                                    
                     MessageBox.Show("Please select a non-empty file!", "Error");
@@ -36,6 +37,12 @@ namespace NoobasStudio.Models
                 {
                     MessageBox.Show("Please select file with english language!", "Error");                                            
                     return;
+                }
+
+                else
+                {
+                    text = File.ReadAllLines(FilePath);
+                    text = text.Where(x => x != "").ToArray();
                 }
             }
             catch (Exception)

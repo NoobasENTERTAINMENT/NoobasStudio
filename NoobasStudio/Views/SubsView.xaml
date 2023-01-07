@@ -7,7 +7,7 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="400"
-    d:DesignWidth="900"
+    d:DesignWidth="1200"
     mc:Ignorable="d">
     <Grid>
         <StackPanel
@@ -34,7 +34,7 @@
                         Kind="ArrowLeftCircleOutline" />
                 </Button>
                 <Border
-                    Width="700"
+                    Width="900"
                     Height="340"
                     Margin="10"
                     Background="{StaticResource NooViolet}"
@@ -45,22 +45,64 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Orientation="Vertical">
-                            <TextBlock
-                                HorizontalAlignment="Center"
-                                FontSize="40"
-                                Foreground="#FFD8D8D8"
-                                Text="LALALALALA" />
-                            <TextBlock
-                                HorizontalAlignment="Center"
-                                FontSize="50"
-                                FontWeight="Bold"
-                                Foreground="White"
-                                Text="LALALALALA" />
-                            <TextBlock
-                                HorizontalAlignment="Center"
-                                FontSize="40"
-                                Foreground="#FFD8D8D8"
-                                Text="LALALALALA" />
+                            <ListBox IsHitTestVisible="False" ItemsSource="{Binding Subs}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock FontSize="25" Foreground="White" />
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                                <!--<ListBoxItem HorizontalAlignment="Center">
+                                    <TextBlock
+                                        FontSize="25"
+                                        Foreground="White"
+                                        Text="LALALALLFLFLFL" />
+                                </ListBoxItem>
+                                <ListBoxItem HorizontalAlignment="Center">
+                                    <TextBlock
+                                        FontSize="30"
+                                        FontWeight="Bold"
+                                        Foreground="White"
+                                        Text="{Binding Text}" />
+                                </ListBoxItem>
+                                <ListBoxItem HorizontalAlignment="Center">
+                                    <TextBlock
+                                        FontSize="25"
+                                        Foreground="White"
+                                        Text="LALDASDADAALAL" />
+                                </ListBoxItem>-->
+
+                                <ListBox.ItemContainerStyle>
+
+                                    <Style TargetType="{x:Type ListBoxItem}">
+
+                                        <Setter Property="LayoutTransform">
+                                            <Setter.Value>
+                                                <ScaleTransform x:Name="transform" />
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Style.Triggers>
+                                            <EventTrigger RoutedEvent="Loaded">
+                                                <EventTrigger.Actions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation
+                                                                Storyboard.TargetProperty="Opacity"
+                                                                From="0"
+                                                                To="1"
+                                                                Duration="0:0:2" />
+                                                            <DoubleAnimation
+                                                                Storyboard.TargetProperty="LayoutTransform.ScaleY"
+                                                                From="0"
+                                                                Duration="0:0:.2" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </EventTrigger.Actions>
+                                            </EventTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+
+                            </ListBox>
                         </StackPanel>
                     </Grid>
                 </Border>
