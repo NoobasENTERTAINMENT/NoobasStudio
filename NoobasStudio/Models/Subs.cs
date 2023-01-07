@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using NoobasStudio.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +13,7 @@ namespace NoobasStudio.Models
 {
     public class Subs
     {
-        public string[] text { get; set; }
+        private List<string> text;
         public void LoadSubs()
         {
             try
@@ -41,8 +42,8 @@ namespace NoobasStudio.Models
 
                 else
                 {
-                    text = File.ReadAllLines(FilePath);
-                    text = text.Where(x => x != "").ToArray();
+                    text = File.ReadAllLines(FilePath).ToList();
+                    text = text.Where(x => x != "").ToList();
                 }
             }
             catch (Exception)
@@ -50,6 +51,10 @@ namespace NoobasStudio.Models
                 MessageBox.Show("File wasn't be chosen! Try again.", "Error");
                 return;
             }
+        }
+        public List<string> GetSubs()
+        {
+            return text;
         }
     }
 }

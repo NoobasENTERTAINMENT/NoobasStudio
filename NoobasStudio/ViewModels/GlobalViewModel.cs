@@ -11,24 +11,21 @@ namespace NoobasStudio.ViewModels
 {
     public class GlobalViewModel : ViewModelBase
     {
-        readonly Subs subs = new Subs();
         public ICommand LoadSaveCommand { get; }
         public ICommand LoadFileCommand { get; }
 
-        private List<string> _subs = new List<string>() { "1", "2", "3" };
+        private List<string> _subs;
         public List<string> Subs
         {
-            get => _subs;
-            set 
-            { 
-                _subs = value;
-                OnPropertyChanged();
-            }
+            get { return _subs; }
+            set { _subs = value; OnPropertyChanged(); }
         }
+
         public GlobalViewModel()
         {
             LoadSaveCommand = new LoadSaveCommand();
             LoadFileCommand = new LoadFileCommand();
+            //Subs =
         }
     }
 }
