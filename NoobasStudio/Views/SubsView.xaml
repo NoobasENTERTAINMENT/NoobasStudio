@@ -55,8 +55,7 @@
                                 ItemsSource="{Binding Subs, UpdateSourceTrigger=PropertyChanged}"
                                 ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                                 ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                                SelectedIndex="{Binding CurrentSelectedItem}"
-                                SelectionChanged="SubsListView_SelectionChanged">
+                                SelectedIndex="{Binding CurrentSelectedItem}">
                                 <ListBox.ItemContainerStyle>
 
                                     <Style TargetType="{x:Type ListBoxItem}">
