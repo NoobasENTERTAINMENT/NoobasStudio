@@ -24,5 +24,9 @@ namespace NoobasStudio.Views
         {
             InitializeComponent();
         }
+        private void SubsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ((ListBox)sender).ScrollIntoView(SubsListView.SelectedItem);
+        }
     }
 }

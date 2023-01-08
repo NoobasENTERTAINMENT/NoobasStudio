@@ -23,6 +23,7 @@ namespace NoobasStudio.Commands
             try
             {
                 _globalViewModel.Subs = subs.LoadSubs();
+                _globalViewModel.CountOfSubs = _globalViewModel.Subs.Count - 1;
             }
             catch (InvalidSubsException)
             {

@@ -11,10 +11,18 @@ namespace NoobasStudio.ViewModels
 {
     public class GlobalViewModel : ViewModelBase
     {
+        public GlobalViewModel()
+        {
+            LoadSaveCommand = new LoadSaveCommand();
+            LoadFileCommand = new LoadFileCommand(this);
+            NextLineCommand = new NextLineCommand(this);
+            PreviousLineCommand = new PreviousLineCommand(this);
+        }
         public ICommand LoadSaveCommand { get; }
         public ICommand LoadFileCommand { get; }
         public ICommand NextLineCommand { get; }
         public ICommand PreviousLineCommand { get; }
+
 
         private int _currentSelectedItem;
         public int CurrentSelectedItem
@@ -30,6 +38,7 @@ namespace NoobasStudio.ViewModels
             }
         }
 
+
         private List<string> _subs;
         public List<string> Subs
         {
@@ -44,12 +53,20 @@ namespace NoobasStudio.ViewModels
             }
         }
 
-        public GlobalViewModel()
+
+        private int _countOfSubs;
+        public int CountOfSubs
         {
-            LoadSaveCommand = new LoadSaveCommand();
-            LoadFileCommand = new LoadFileCommand(this);
-            NextLineCommand = new NextLineCommand(this);
-            PreviousLineCommand = new PreviousLineCommand(this);
+            get
+            {
+                return _countOfSubs;
+            }
+            set
+            {
+                _countOfSubs = value;
+                OnPropertyChanged();
+            }
         }
+
     }
 }

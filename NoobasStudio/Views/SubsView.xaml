@@ -47,15 +47,18 @@
                             VerticalAlignment="Center"
                             Orientation="Vertical">
                             <ListBox
+                                x:Name="SubsListView"
                                 MaxHeight="130"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 IsHitTestVisible="False"
                                 ItemsSource="{Binding Subs, UpdateSourceTrigger=PropertyChanged}"
+                                ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                                 ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                                SelectedIndex="{Binding CurrentSelectedItem}">
-
+                                SelectedIndex="{Binding CurrentSelectedItem}"
+                                SelectionChanged="SubsListView_SelectionChanged">
                                 <ListBox.ItemContainerStyle>
+
                                     <Style TargetType="{x:Type ListBoxItem}">
                                         <Setter Property="HorizontalAlignment" Value="Center" />
                                         <Setter Property="Foreground" Value="White" />
@@ -119,9 +122,9 @@
                 FontSize="25"
                 FontWeight="Bold"
                 Foreground="#FFD8D8D8">
-                <Run Text="33" />
+                <Run Text="{Binding CurrentSelectedItem}" />
                 <Run Text="/" />
-                <Run Text="120" />
+                <Run Text="{Binding CountOfSubs}" />
             </TextBlock>
         </StackPanel>
 

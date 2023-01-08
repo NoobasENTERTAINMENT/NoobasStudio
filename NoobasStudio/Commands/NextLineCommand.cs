@@ -5,16 +5,13 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace NoobasStudio.Commands
 {
     public class NextLineCommand : CommandBase
     { 
         GlobalViewModel _globalViewModel;
-        public override bool CanExecute(object parameter)
-        {
-            return (_globalViewModel.Subs != null) && base.CanExecute(parameter);
-        }
         public NextLineCommand(GlobalViewModel globalViewModel)
         {
             _globalViewModel = globalViewModel;
@@ -22,10 +19,16 @@ namespace NoobasStudio.Commands
         }
         private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(_globalViewModel.CurrentSelectedItem) || e.PropertyName == nameof(_globalViewModel.Subs))
+            if (e.PropertyName == nameof(_globalViewModel.CurrentSelectedItem) 
+                || e.PropertyName == nameof(_globalViewModel.Subs) 
+                || e.PropertyName == nameof(_globalViewModel.CountOfSubs))
             {
                 OnCanExecuteChanged();
             }
+        }
+        public override bool CanExecute(object parameter)
+        {
+            return (_globalViewModel.Subs != null && _globalViewModel.CurrentSelectedItem < _globalViewModel.CountOfSubs) && base.CanExecute(parameter);
         }
         public override void Execute(object parameter)
         {

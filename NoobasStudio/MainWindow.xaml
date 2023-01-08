@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="clr-namespace:NoobasStudio.Views"
     xmlns:vms="clr-namespace:NoobasStudio.ViewModels"
-    Title="MainWindow"
+    Title="Noobas Translator"
     Width="1200"
     Height="750"
     Background="#FF2F1A5F"
@@ -31,8 +31,8 @@
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Command="{Binding CloseCommand}"
-            Style="{StaticResource MaterialDesignIconButton}"
-                Cursor="Hand">
+            Cursor="Hand"
+            Style="{StaticResource MaterialDesignIconButton}">
             <materialDesign:PackIcon
                 Width="40"
                 Height="40"
