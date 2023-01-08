@@ -24,6 +24,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     materialDesign:ButtonAssist.CornerRadius="30"
+                    Command="{Binding PreviousLineCommand}"
                     Cursor="Hand"
                     Style="{StaticResource MaterialDesignFlatButton}">
                     <materialDesign:PackIcon
@@ -45,42 +46,32 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Orientation="Vertical">
-                            <ListBox IsHitTestVisible="False" ItemsSource="{Binding Subs, UpdateSourceTrigger=PropertyChanged}">
-                                <!--<ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <TextBlock FontSize="25" Foreground="White" />
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>-->
-                                <!--<ListBoxItem HorizontalAlignment="Center">
-                                    <TextBlock
-                                        FontSize="25"
-                                        Foreground="White"
-                                        Text="LALALALLFLFLFL" />
-                                </ListBoxItem>
-                                <ListBoxItem HorizontalAlignment="Center">
-                                    <TextBlock
-                                        FontSize="30"
-                                        FontWeight="Bold"
-                                        Foreground="White"
-                                        Text="{Binding Text}" />
-                                </ListBoxItem>
-                                <ListBoxItem HorizontalAlignment="Center">
-                                    <TextBlock
-                                        FontSize="25"
-                                        Foreground="White"
-                                        Text="LALDASDADAALAL" />
-                                </ListBoxItem>-->
+                            <ListBox
+                                MaxHeight="130"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                IsHitTestVisible="False"
+                                ItemsSource="{Binding Subs, UpdateSourceTrigger=PropertyChanged}"
+                                ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                                SelectedIndex="{Binding CurrentSelectedItem}">
 
                                 <ListBox.ItemContainerStyle>
-
                                     <Style TargetType="{x:Type ListBoxItem}">
+                                        <Setter Property="HorizontalAlignment" Value="Center" />
                                         <Setter Property="Foreground" Value="White" />
                                         <Setter Property="LayoutTransform">
                                             <Setter.Value>
                                                 <ScaleTransform x:Name="transform" />
                                             </Setter.Value>
                                         </Setter>
+                                        <Setter Property="FontSize" Value="25" />
                                         <Style.Triggers>
+
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter Property="FontWeight" Value="Bold" />
+                                                <Setter Property="FontSize" Value="35" />
+                                            </Trigger>
+
                                             <EventTrigger RoutedEvent="Loaded">
                                                 <EventTrigger.Actions>
                                                     <BeginStoryboard>
@@ -112,6 +103,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     materialDesign:ButtonAssist.CornerRadius="30"
+                    Command="{Binding NextLineCommand}"
                     Cursor="Hand"
                     Style="{StaticResource MaterialDesignFlatButton}">
                     <materialDesign:PackIcon

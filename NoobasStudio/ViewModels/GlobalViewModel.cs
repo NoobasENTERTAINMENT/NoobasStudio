@@ -13,19 +13,43 @@ namespace NoobasStudio.ViewModels
     {
         public ICommand LoadSaveCommand { get; }
         public ICommand LoadFileCommand { get; }
+        public ICommand NextLineCommand { get; }
+        public ICommand PreviousLineCommand { get; }
+
+        private int _currentSelectedItem;
+        public int CurrentSelectedItem
+        {
+            get
+            {
+                return _currentSelectedItem;
+            }
+            set
+            {
+                _currentSelectedItem = value;
+                OnPropertyChanged();
+            }
+        }
 
         private List<string> _subs;
         public List<string> Subs
         {
-            get { return _subs; }
-            set { _subs = value; OnPropertyChanged(); }
+            get 
+            { 
+                return _subs; 
+            }
+            set 
+            { 
+                _subs = value; 
+                OnPropertyChanged(); 
+            }
         }
 
         public GlobalViewModel()
         {
             LoadSaveCommand = new LoadSaveCommand();
-            LoadFileCommand = new LoadFileCommand();
-            //Subs =
+            LoadFileCommand = new LoadFileCommand(this);
+            NextLineCommand = new NextLineCommand(this);
+            PreviousLineCommand = new PreviousLineCommand(this);
         }
     }
 }

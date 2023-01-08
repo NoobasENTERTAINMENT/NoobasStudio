@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using NoobasStudio.Exceptions;
 using NoobasStudio.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -13,48 +14,32 @@ namespace NoobasStudio.Models
 {
     public class Subs
     {
-        private List<string> text;
-        public void LoadSubs()
+        private List<string> SubsText;
+        public List<string> LoadSubs()
         {
-            try
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.ShowDialog();
+            
+            string RealFileName = ofd.SafeFileName;
+            string FilePath = ofd.FileName;
+
+            var file = new FileInfo(FilePath);
+            string AllText = File.ReadAllText(FilePath);
+
+            SubsText = File.ReadAllLines(FilePath).ToList();
+            SubsText = SubsText.Where(x => x != "").ToList();
+
+            if (IsRu(AllText) || file.Length == 0 || AllText.Trim() == string.Empty)
             {
-                OpenFileDialog ofd = new OpenFileDialog();
-                ofd.ShowDialog();                                                                  
-
-                string RealFileName = ofd.SafeFileName; 
-                string FilePath = ofd.FileName;
-
-                var file = new FileInfo(FilePath);
-
-                if (file.Length == 0) 
-                {                                    
-                    MessageBox.Show("Please select a non-empty file!", "Error");
-                    return;
-                }
-
-                string AllText = File.ReadAllText(FilePath);        
-
-                if (Regex.IsMatch(AllText, @"\p{IsCyrillic}"))             
-                {
-                    MessageBox.Show("Please select file with english language!", "Error");                                            
-                    return;
-                }
-
-                else
-                {
-                    text = File.ReadAllLines(FilePath).ToList();
-                    text = text.Where(x => x != "").ToList();
-                }
+                throw new InvalidSubsException();
             }
-            catch (Exception)
-            {
-                MessageBox.Show("File wasn't be chosen! Try again.", "Error");
-                return;
-            }
+            return SubsText;
+
         }
-        public List<string> GetSubs()
+
+        private bool IsRu(string subsText)
         {
-            return text;
+            return Regex.IsMatch(subsText, @"\p{IsCyrillic}");
         }
     }
 }

@@ -70,6 +70,9 @@
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\LoadFileCommand.cs" />
     <Compile Include="Commands\LoadSaveCommand.cs" />
+    <Compile Include="Commands\NextLineCommand.cs" />
+    <Compile Include="Commands\PreviousLineCommand.cs" />
+    <Compile Include="Exceptions\InvalidSubsException.cs" />
     <Compile Include="Models\Subs.cs" />
     <Compile Include="ViewModels\GlobalViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
