@@ -36,8 +36,15 @@
             BorderBrush="Transparent"
             FontSize="30"
             Foreground="White"
+            IsReadOnly="{Binding IsTranslationEnded, UpdateSourceTrigger=PropertyChanged}"
             MaxLength="150"
+            Text="{Binding Translation, UpdateSourceTrigger=PropertyChanged}"
             TextAlignment="Center">
+
+            <TextBox.InputBindings>
+                <KeyBinding Key="Return" Command="{Binding AddTranslateLineCommand}" />
+            </TextBox.InputBindings>
+
             <TextBox.Resources>
                 <Style TargetType="{x:Type materialDesign:SmartHint}">
                     <Setter Property="HorizontalAlignment" Value="Center" />

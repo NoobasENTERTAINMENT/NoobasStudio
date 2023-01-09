@@ -8,6 +8,10 @@ namespace NoobasStudio.Models
 {
     public class TranslatedText
     {
-
+        List<string> translatedText = new List<string>();
+        public void AddLine(string Line)
+        {
+            translatedText.Add(Line);
+        }
     }
 }

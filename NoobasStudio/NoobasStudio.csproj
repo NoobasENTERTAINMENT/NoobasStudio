@@ -67,6 +67,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\AddTranslateLineCommand.cs" />
     <Compile Include="Commands\CloseCommand.cs" />
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\LoadSubsCommand.cs" />

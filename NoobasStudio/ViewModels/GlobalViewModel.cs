@@ -16,8 +16,10 @@ namespace NoobasStudio.ViewModels
             LoadSubsCommand = new LoadSubsCommand(this);
             NextLineCommand = new NextLineCommand(this);
             PreviousLineCommand = new PreviousLineCommand(this);
+            AddTranslateLineCommand = new AddTranslateLineCommand(this);
         }
         public ICommand LoadSubsCommand { get; }
+        public ICommand AddTranslateLineCommand { get; }
         public ICommand NextLineCommand { get; }
         public ICommand PreviousLineCommand { get; }
 
@@ -51,6 +53,33 @@ namespace NoobasStudio.ViewModels
             }
         }
 
+        private string _translation = String.Empty;
+        public string Translation
+        {
+            get
+            {
+                return _translation;
+            }
+            set
+            {
+                _translation = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isTranslationEnded = false;
+        public bool IsTranslationEnded
+        {
+            get
+            {
+                return _isTranslationEnded = false;
+            }
+            set
+            {
+                _isTranslationEnded  = value;
+                OnPropertyChanged();
+            }
+        }
 
         private int _countOfSubs;
         public int CountOfSubs
