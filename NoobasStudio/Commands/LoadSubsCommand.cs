@@ -10,11 +10,11 @@ using System.Windows;
 
 namespace NoobasStudio.Commands
 {
-    public class LoadFileCommand : CommandBase
+    public class LoadSubsCommand : CommandBase
     {
         Subs subs = new Subs();
         GlobalViewModel _globalViewModel;
-        public LoadFileCommand(GlobalViewModel globalViewModel)
+        public LoadSubsCommand(GlobalViewModel globalViewModel)
         {
             _globalViewModel = globalViewModel;
         }

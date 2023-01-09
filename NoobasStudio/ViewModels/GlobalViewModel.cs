@@ -13,13 +13,11 @@ namespace NoobasStudio.ViewModels
     {
         public GlobalViewModel()
         {
-            LoadSaveCommand = new LoadSaveCommand();
-            LoadFileCommand = new LoadFileCommand(this);
+            LoadSubsCommand = new LoadSubsCommand(this);
             NextLineCommand = new NextLineCommand(this);
             PreviousLineCommand = new PreviousLineCommand(this);
         }
-        public ICommand LoadSaveCommand { get; }
-        public ICommand LoadFileCommand { get; }
+        public ICommand LoadSubsCommand { get; }
         public ICommand NextLineCommand { get; }
         public ICommand PreviousLineCommand { get; }
 

@@ -68,8 +68,7 @@
     </ApplicationDefinition>
     <Compile Include="Commands\CloseCommand.cs" />
     <Compile Include="Commands\CommandBase.cs" />
-    <Compile Include="Commands\LoadFileCommand.cs" />
-    <Compile Include="Commands\LoadSaveCommand.cs" />
+    <Compile Include="Commands\LoadSubsCommand.cs" />
     <Compile Include="Commands\NextLineCommand.cs" />
     <Compile Include="Commands\PreviousLineCommand.cs" />
     <Compile Include="Exceptions\InvalidSubsException.cs" />

@@ -15,9 +15,17 @@
                 FontSize="20"
                 FontWeight="Bold"
                 Foreground="White"
-                Header="File">
+                Header="Project">
+                <MenuItem Header="Create" />
+                <MenuItem Header="Load" />
                 <MenuItem Header="Save" />
-                <MenuItem Command="{Binding LoadSaveCommand}" Header="Load save" />
+            </MenuItem>
+            <MenuItem
+                FontSize="20"
+                FontWeight="Bold"
+                Foreground="White"
+                Header="File">
+                <MenuItem Header="Export translation as .txt" />
             </MenuItem>
             <MenuItem
                 FontSize="20"
@@ -25,7 +33,7 @@
                 Foreground="White"
                 Header="Subtitles">
                 <MenuItem Header="Load">
-                    <MenuItem Command="{Binding LoadFileCommand}" Header="As a .txt file" />
+                    <MenuItem Command="{Binding LoadSubsCommand}" Header="As a .txt file" />
                     <MenuItem Header="As a URL from YouTube" ToolTip="Get subtitles from YouTube video" />
                 </MenuItem>
             </MenuItem>
