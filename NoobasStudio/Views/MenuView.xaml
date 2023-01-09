@@ -11,20 +11,32 @@
     mc:Ignorable="d">
     <Grid>
         <Menu Margin="25" materialDesign:MenuAssist.TopLevelMenuItemHeight="25">
-
             <MenuItem
                 FontSize="20"
                 FontWeight="Bold"
                 Foreground="White"
-                Header="Menu">
-                <MenuItem Command="{Binding LoadFileCommand}" Header="Load file" />
-                <MenuItem Header="Paste URL from YouTube" />
+                Header="File">
                 <MenuItem Header="Save" />
                 <MenuItem Command="{Binding LoadSaveCommand}" Header="Load save" />
+            </MenuItem>
+            <MenuItem
+                FontSize="20"
+                FontWeight="Bold"
+                Foreground="White"
+                Header="Subtitles">
+                <MenuItem Header="Load">
+                    <MenuItem Command="{Binding LoadFileCommand}" Header="As a .txt file" />
+                    <MenuItem Header="As a URL from YouTube" ToolTip="Get subtitles from YouTube video" />
+                </MenuItem>
+            </MenuItem>
+            <MenuItem
+                FontSize="20"
+                FontWeight="Bold"
+                Foreground="White"
+                Header="Edit">
                 <MenuItem Header="Split parts">
-                    <MenuItem Header="1" />
-                    <MenuItem Header="2" />
-                    <MenuItem Header="3" />
+                    <MenuItem Header="For 2 persons" />
+                    <MenuItem Header="For 3 persons" />
                 </MenuItem>
             </MenuItem>
             <Menu.Resources>
