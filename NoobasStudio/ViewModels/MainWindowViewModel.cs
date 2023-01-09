@@ -10,6 +10,7 @@ namespace NoobasStudio.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
+
         public ICommand CloseCommand { get; }
         public ViewModelBase CurrentViewModel { get; }
         public MainWindowViewModel()
