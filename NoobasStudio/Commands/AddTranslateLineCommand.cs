@@ -35,15 +35,23 @@ namespace NoobasStudio.Commands
             return (_globalViewModel.Translation.Trim() != String.Empty
                 && _globalViewModel.Translation != null
                 && _globalViewModel.Subs != null
-                && _globalViewModel.CurrentSelectedItem <= _globalViewModel.CountOfSubs) 
+                && _globalViewModel.CurrentSelectedItem <= _globalViewModel.CountOfSubs)
                 && base.CanExecute(parameter);
         }
         public override void Execute(object parameter)
         {
-            translatedText.AddLine(_globalViewModel.Translation);
-            _globalViewModel.Translation = string.Empty;
-            _globalViewModel.CurrentSelectedItem++;
-
+            if(_globalViewModel.CountOfSubs == _globalViewModel.CurrentSelectedItem)
+            {
+                translatedText.AddLine(_globalViewModel.Translation);
+                _globalViewModel.Translation = string.Empty;
+                _globalViewModel.IsTranslationEnded = true;
+            }
+            else
+            {
+                translatedText.AddLine(_globalViewModel.Translation);
+                _globalViewModel.Translation = string.Empty;
+                _globalViewModel.CurrentSelectedItem++;
+            }
         }
     }
 }

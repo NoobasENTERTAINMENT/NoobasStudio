@@ -44,7 +44,7 @@ namespace NoobasStudio.ViewModels
         {
             get 
             { 
-                return _subs; 
+                return _subs;
             }
             set 
             { 
@@ -67,12 +67,12 @@ namespace NoobasStudio.ViewModels
             }
         }
 
-        private bool _isTranslationEnded = false;
+        private bool _isTranslationEnded = true;
         public bool IsTranslationEnded
         {
             get
             {
-                return _isTranslationEnded = false;
+                return _isTranslationEnded;
             }
             set
             {
