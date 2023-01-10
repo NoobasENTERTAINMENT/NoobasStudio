@@ -1,4 +1,5 @@
 ﻿using NoobasStudio.Commands;
+using NoobasStudio.Commands.SplitPartsCommands;
 using NoobasStudio.Models;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,28 @@ namespace NoobasStudio.ViewModels
             NextLineCommand = new NextLineCommand(this);
             PreviousLineCommand = new PreviousLineCommand(this);
             AddTranslateLineCommand = new AddTranslateLineCommand(this);
+            PartOneSplitCommand = new PartOneSplitCommand(this);
         }
         public ICommand LoadSubsCommand { get; }
         public ICommand AddTranslateLineCommand { get; }
         public ICommand NextLineCommand { get; }
         public ICommand PreviousLineCommand { get; }
+        public ICommand PartOneSplitCommand { get; }
+
+
+        private int _currentMenuItem;
+        public int CurrentMenuItem
+        {
+            get
+            {
+                return _currentMenuItem;
+            }
+            set
+            {
+                _currentMenuItem = value;
+                OnPropertyChanged();
+            }
+        }
 
 
         private int _currentSelectedItem;
@@ -67,12 +85,12 @@ namespace NoobasStudio.ViewModels
             }
         }
 
-        private bool _isTranslationEnded = false;
+        private bool _isTranslationEnded;
         public bool IsTranslationEnded
         {
             get
             {
-                return _isTranslationEnded = false;
+                return _isTranslationEnded = true;
             }
             set
             {

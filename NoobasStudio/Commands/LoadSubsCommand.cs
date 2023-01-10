@@ -27,7 +27,7 @@ namespace NoobasStudio.Commands
             }
             catch (InvalidSubsException)
             {
-                MessageBox.Show("Cyrillic or white space or empty file is not allowed.", "Loading subtitles error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Cyrillic and empty file are not allowed", "Loading subtitles error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             catch (ArgumentException)

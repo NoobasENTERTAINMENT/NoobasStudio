@@ -73,7 +73,10 @@
     <Compile Include="Commands\LoadSubsCommand.cs" />
     <Compile Include="Commands\NextLineCommand.cs" />
     <Compile Include="Commands\PreviousLineCommand.cs" />
+    <Compile Include="Commands\SplitPartCommand.cs" />
+    <Compile Include="Commands\SplitPartsCommands\PartOneSplitCommand.cs" />
     <Compile Include="Exceptions\InvalidSubsException.cs" />
+    <Compile Include="Models\SplitEnglishSubs.cs" />
     <Compile Include="Models\Subs.cs" />
     <Compile Include="Models\TranslatedText.cs" />
     <Compile Include="ViewModels\GlobalViewModel.cs" />
@@ -143,6 +146,7 @@
   <ItemGroup>
     <Resource Include="Images\TranslatorLogo.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.7.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.7.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
