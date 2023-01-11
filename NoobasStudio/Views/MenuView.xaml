@@ -16,11 +16,12 @@
                 FontWeight="Bold"
                 Foreground="White"
                 Header="Project">
-                <MenuItem Header="Create" />
+                <MenuItem Command="{Binding CreateProjectCommand}" Header="Create" />
                 <MenuItem Header="Load" />
-                <MenuItem Header="Save" />
+                <MenuItem Command="{Binding SaveProjectCommand}" Header="Save" />
             </MenuItem>
             <MenuItem
+                Command="{Binding FileMenuItemCommand}"
                 FontSize="20"
                 FontWeight="Bold"
                 Foreground="White"
@@ -28,6 +29,7 @@
                 <MenuItem Header="Export translation as .txt" />
             </MenuItem>
             <MenuItem
+                Command="{Binding SubtitlesMenuItemCommand}"
                 FontSize="20"
                 FontWeight="Bold"
                 Foreground="White"
@@ -38,6 +40,7 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem
+                Command="{Binding EditMenuItemCommand}"
                 FontSize="20"
                 FontWeight="Bold"
                 Foreground="White"
@@ -45,25 +48,25 @@
                 <MenuItem Header="Split parts">
                     <MenuItem Header="For 2 persons">
                         <MenuItem
-                            Command="{Binding PartOneSplitCommand}"
+                            Command="{Binding SplitPartCommand}"
                             CommandParameter="1"
                             Header="Part №1" />
                         <MenuItem
-                            Command="{Binding PartOneSplitCommand}"
+                            Command="{Binding SplitPartCommand}"
                             CommandParameter="2"
                             Header="Part №2" />
                     </MenuItem>
                     <MenuItem Header="For 3 persons">
                         <MenuItem
-                            Command="{Binding PartOneSplitCommand}"
+                            Command="{Binding SplitPartCommand}"
                             CommandParameter="3"
                             Header="Part №1" />
                         <MenuItem
-                            Command="{Binding PartOneSplitCommand}"
+                            Command="{Binding SplitPartCommand}"
                             CommandParameter="4"
                             Header="Part №2" />
                         <MenuItem
-                            Command="{Binding PartOneSplitCommand}"
+                            Command="{Binding SplitPartCommand}"
                             CommandParameter="5"
                             Header="Part №3" />
                     </MenuItem>

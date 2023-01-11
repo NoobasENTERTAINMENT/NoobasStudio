@@ -1,5 +1,5 @@
 ﻿using NoobasStudio.Commands;
-using NoobasStudio.Commands.SplitPartsCommands;
+using NoobasStudio.Commands.MenuCommands;
 using NoobasStudio.Models;
 using System;
 using System.Collections.Generic;
@@ -17,14 +17,37 @@ namespace NoobasStudio.ViewModels
             LoadSubsCommand = new LoadSubsCommand(this);
             NextLineCommand = new NextLineCommand(this);
             PreviousLineCommand = new PreviousLineCommand(this);
-            AddTranslateLineCommand = new AddTranslateLineCommand(this);
-            PartOneSplitCommand = new PartOneSplitCommand(this);
+            SplitPartCommand = new SplitPartCommand(this);
+            CreateProjectCommand = new CreateProjectCommand(this);
+            SubtitlesMenuItemCommand = new SubtitlesMenuItemCommand(this);
+            SaveProjectCommand = new SaveProjectCommand(this);
+            FileMenuItemCommand = new FileMenuItemCommand(this);
+            EditMenuItemCommand = new EditMenuItemCommand(this);
         }
+
         public ICommand LoadSubsCommand { get; }
-        public ICommand AddTranslateLineCommand { get; }
         public ICommand NextLineCommand { get; }
         public ICommand PreviousLineCommand { get; }
-        public ICommand PartOneSplitCommand { get; }
+        public ICommand SplitPartCommand { get; }
+        public ICommand CreateProjectCommand { get; }
+        public ICommand SubtitlesMenuItemCommand { get; }
+        public ICommand FileMenuItemCommand { get; }
+        public ICommand EditMenuItemCommand { get; }
+        public ICommand SaveProjectCommand { get; }
+
+        private bool _isProjectCreated = false;
+        public bool IsProjectCreated
+        {
+            get
+            {
+                return _isProjectCreated;
+            }
+            set
+            {
+                _isProjectCreated = value;
+                OnPropertyChanged();
+            }
+        }
 
 
         private int _currentMenuItem;
@@ -71,6 +94,7 @@ namespace NoobasStudio.ViewModels
             }
         }
 
+
         private string _translation = String.Empty;
         public string Translation
         {
@@ -85,6 +109,7 @@ namespace NoobasStudio.ViewModels
             }
         }
 
+
         private bool _isTranslationEnded;
         public bool IsTranslationEnded
         {
@@ -98,6 +123,7 @@ namespace NoobasStudio.ViewModels
                 OnPropertyChanged();
             }
         }
+
 
         private int _countOfSubs;
         public int CountOfSubs
