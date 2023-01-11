@@ -8,7 +8,7 @@ namespace NoobasStudio.Models
 {
     public class SplitEnglishSubs
     {
-        List<string> yourPart = new List<string>();
+        readonly List<string> yourPart = new List<string>();
         public List<string> SplitTextToParts(List<string> subs, object part)
         {
             switch (part)

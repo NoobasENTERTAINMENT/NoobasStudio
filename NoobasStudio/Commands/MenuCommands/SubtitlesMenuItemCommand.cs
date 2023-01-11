@@ -10,7 +10,7 @@ namespace NoobasStudio.Commands
 {
     public class SubtitlesMenuItemCommand : CommandBase
     {
-        GlobalViewModel _globalViewModel;
+        readonly GlobalViewModel _globalViewModel;
         public SubtitlesMenuItemCommand(GlobalViewModel globalViewModel)
         {
             _globalViewModel = globalViewModel;

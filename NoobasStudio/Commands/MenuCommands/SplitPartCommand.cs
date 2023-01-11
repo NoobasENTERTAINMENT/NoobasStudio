@@ -10,8 +10,8 @@ namespace NoobasStudio.Commands
 {
     public class SplitPartCommand : CommandBase
     {
-        GlobalViewModel _globalViewModel;
-        SplitEnglishSubs _splitEnglishSubs = new SplitEnglishSubs();
+        readonly GlobalViewModel _globalViewModel;
+        readonly SplitEnglishSubs _splitEnglishSubs = new SplitEnglishSubs();
         public SplitPartCommand(GlobalViewModel globalViewModel)
         {
             _globalViewModel = globalViewModel;

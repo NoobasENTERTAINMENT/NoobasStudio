@@ -10,7 +10,7 @@ namespace NoobasStudio.Commands.MenuCommands
 {
     public class FileMenuItemCommand : CommandBase
     {
-        GlobalViewModel _globalViewModel;
+        readonly GlobalViewModel _globalViewModel;
         public FileMenuItemCommand(GlobalViewModel globalViewModel)
         {
             _globalViewModel = globalViewModel;

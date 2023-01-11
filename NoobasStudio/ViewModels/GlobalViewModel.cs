@@ -35,6 +35,7 @@ namespace NoobasStudio.ViewModels
         public ICommand EditMenuItemCommand { get; }
         public ICommand SaveProjectCommand { get; }
 
+
         private bool _isProjectCreated = false;
         public bool IsProjectCreated
         {
@@ -45,21 +46,6 @@ namespace NoobasStudio.ViewModels
             set
             {
                 _isProjectCreated = value;
-                OnPropertyChanged();
-            }
-        }
-
-
-        private int _currentMenuItem;
-        public int CurrentMenuItem
-        {
-            get
-            {
-                return _currentMenuItem;
-            }
-            set
-            {
-                _currentMenuItem = value;
                 OnPropertyChanged();
             }
         }
@@ -115,7 +101,7 @@ namespace NoobasStudio.ViewModels
         {
             get
             {
-                return _isTranslationEnded = true;
+                return _isTranslationEnded;
             }
             set
             {
@@ -138,6 +124,5 @@ namespace NoobasStudio.ViewModels
                 OnPropertyChanged();
             }
         }
-
     }
 }

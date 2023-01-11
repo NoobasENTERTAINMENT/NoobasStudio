@@ -9,7 +9,7 @@ namespace NoobasStudio.Commands
 {
     public class CreateProjectCommand : CommandBase
     {
-        GlobalViewModel _globalViewModel;
+        readonly GlobalViewModel _globalViewModel;
         public CreateProjectCommand(GlobalViewModel globalViewModel)
         {
             _globalViewModel = globalViewModel;

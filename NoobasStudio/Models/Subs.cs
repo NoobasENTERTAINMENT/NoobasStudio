@@ -36,10 +36,10 @@ namespace NoobasStudio.Models
             return SubsText;
 
         }
-
         private bool IsRu(string subsText)
         {
             return Regex.IsMatch(subsText, @"\p{IsCyrillic}");
         }
     }
+
 }

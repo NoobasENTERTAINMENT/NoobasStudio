@@ -121,9 +121,9 @@
                 FontSize="25"
                 FontWeight="Bold"
                 Foreground="#FFD8D8D8">
-                <Run Text="{Binding CurrentSelectedItem}" />
+                <Run Text="{Binding CurrentSelectedItem, UpdateSourceTrigger=PropertyChanged}" />
                 <Run Text="/" />
-                <Run Text="{Binding CountOfSubs}" />
+                <Run Text="{Binding CountOfSubs, UpdateSourceTrigger=PropertyChanged}" />
             </TextBlock>
         </StackPanel>
 
