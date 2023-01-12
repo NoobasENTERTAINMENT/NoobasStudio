@@ -30,7 +30,9 @@ namespace NoobasStudio.Commands
         }
         public override void Execute(object parameter)
         {
+            _globalViewModel.Translation = String.Empty;
             _globalViewModel.CurrentSelectedItem--;
+            _globalViewModel.Translation = _globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedItem];
         }
     }
 }

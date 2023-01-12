@@ -42,7 +42,7 @@
             TextAlignment="Center">
 
             <TextBox.InputBindings>
-                <KeyBinding Key="Return" Command="{Binding NextLineCommand}" />
+                <KeyBinding Key="Return" Command="{Binding AddTranslatedLineCommand}" />
             </TextBox.InputBindings>
 
             <TextBox.Resources>

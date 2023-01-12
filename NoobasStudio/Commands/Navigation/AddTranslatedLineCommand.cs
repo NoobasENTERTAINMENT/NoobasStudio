@@ -1,20 +1,17 @@
-﻿using NoobasStudio.Models;
-using NoobasStudio.ViewModels;
+﻿using NoobasStudio.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 
-namespace NoobasStudio.Commands
+namespace NoobasStudio.Commands.Navigation
 {
-    public class NextLineCommand : CommandBase
+    public class AddTranslatedLineCommand : CommandBase
     {
         readonly GlobalViewModel _globalViewModel;
-        public NextLineCommand(GlobalViewModel globalViewModel)
+        public AddTranslatedLineCommand(GlobalViewModel globalViewModel)
         {
             _globalViewModel = globalViewModel;
             _globalViewModel.PropertyChanged += OnViewModelPropertyChanged;
@@ -32,21 +29,33 @@ namespace NoobasStudio.Commands
         }
         public override bool CanExecute(object parameter)
         {
-            return (_globalViewModel.Subs != null 
-                && _globalViewModel.CurrentSelectedItem < _globalViewModel.CountOfSubs
+            return (_globalViewModel.Subs != null
+                && _globalViewModel.CurrentSelectedItem <= _globalViewModel.CountOfSubs
                 && _globalViewModel.Translation.Trim() != String.Empty
                 && _globalViewModel.Translation != null) && base.CanExecute(parameter);
         }
         public override void Execute(object parameter)
         {
-            if(_globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedItem+1] == null)
+            if (_globalViewModel.CountOfSubs == _globalViewModel.CurrentSelectedItem)
             {
-                _globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedItem + 1] = String.Empty;
+                _globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedItem] = _globalViewModel.Translation;
+                _globalViewModel.Translation = string.Empty;
+                _globalViewModel.IsTranslationEnded = true;
             }
-            if (_globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedItem] != null)
+            else
             {
+                _globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedItem] = _globalViewModel.Translation;
+
+                if (_globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedItem + 1] != null)
+                {
+                    _globalViewModel.Translation = _globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedItem + 1];
+                }
+                else
+                {
+                    _globalViewModel.Translation = string.Empty;
+                }
+                
                 _globalViewModel.CurrentSelectedItem++;
-                _globalViewModel.Translation = _globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedItem];
             }
         }
     }

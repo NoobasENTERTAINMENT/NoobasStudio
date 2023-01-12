@@ -46,7 +46,9 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Orientation="Vertical">
+
                             <ListBox
+                                SelectionChanged="SubsListView_SelectionChanged"
                                 x:Name="SubsListView"
                                 MaxHeight="130"
                                 HorizontalAlignment="Center"
@@ -56,8 +58,8 @@
                                 ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                                 ScrollViewer.VerticalScrollBarVisibility="Hidden"
                                 SelectedIndex="{Binding CurrentSelectedItem}">
-                                <ListBox.ItemContainerStyle>
 
+                                <ListBox.ItemContainerStyle>
                                     <Style TargetType="{x:Type ListBoxItem}">
                                         <Setter Property="HorizontalAlignment" Value="Center" />
                                         <Setter Property="Foreground" Value="White" />

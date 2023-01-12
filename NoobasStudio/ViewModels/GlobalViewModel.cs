@@ -1,11 +1,14 @@
-﻿using NoobasStudio.Commands;
+﻿using Microsoft.VisualStudio.PlatformUI;
+using NoobasStudio.Commands;
 using NoobasStudio.Commands.MenuCommands;
+using NoobasStudio.Commands.Navigation;
 using NoobasStudio.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace NoobasStudio.ViewModels
@@ -23,6 +26,7 @@ namespace NoobasStudio.ViewModels
             SaveProjectCommand = new SaveProjectCommand(this);
             FileMenuItemCommand = new FileMenuItemCommand(this);
             EditMenuItemCommand = new EditMenuItemCommand(this);
+            AddTranslatedLineCommand = new AddTranslatedLineCommand(this);
         }
 
         public ICommand LoadSubsCommand { get; }
@@ -34,6 +38,7 @@ namespace NoobasStudio.ViewModels
         public ICommand FileMenuItemCommand { get; }
         public ICommand EditMenuItemCommand { get; }
         public ICommand SaveProjectCommand { get; }
+        public ICommand AddTranslatedLineCommand { get; }
 
 
         private bool _isProjectCreated = false;
@@ -96,7 +101,7 @@ namespace NoobasStudio.ViewModels
         }
 
 
-        private bool _isTranslationEnded;
+        private bool _isTranslationEnded = true;
         public bool IsTranslationEnded
         {
             get
@@ -121,6 +126,20 @@ namespace NoobasStudio.ViewModels
             set
             {
                 _countOfSubs = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string[] _translatedText;
+        public string[] TranslatedText
+        {
+            get
+            {
+                return _translatedText;
+            }
+            set
+            {
+                _translatedText = value;
                 OnPropertyChanged();
             }
         }
