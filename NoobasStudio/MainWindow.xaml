@@ -13,6 +13,7 @@
     Icon="Images/TranslatorLogo.png"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
+    WindowState="{Binding WindowState}"
     WindowStyle="None"
     mc:Ignorable="d">
     <Grid>
@@ -23,20 +24,38 @@
         <views:MenuView Grid.Row="0" DataContext="{Binding CurrentViewModel}" />
         <views:SubsView Grid.Row="0" DataContext="{Binding CurrentViewModel}" />
         <views:TranslationFieldView Grid.Row="1" DataContext="{Binding CurrentViewModel}" />
-        <Button
-            Width="60"
-            Height="60"
-            Margin="15"
+        <StackPanel
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
-            Command="{Binding CloseCommand}"
-            Cursor="Hand"
-            Style="{StaticResource MaterialDesignIconButton}">
-            <materialDesign:PackIcon
-                Width="40"
-                Height="40"
-                Foreground="White"
-                Kind="Close" />
-        </Button>
+            Orientation="Horizontal">
+            <Button
+                Width="60"
+                Height="60"
+                Margin="10"
+                Command="{Binding WindowStateChangeCommand}"
+                Cursor="Hand"
+                Style="{StaticResource MaterialDesignIconButton}">
+                <materialDesign:PackIcon
+                    Width="40"
+                    Height="40"
+                    Margin="0,-1,0,0"
+                    Foreground="White"
+                    Kind="RectangleOutline" />
+            </Button>
+            <Button
+                Width="60"
+                Height="60"
+                Margin="10"
+                Command="{Binding CloseCommand}"
+                Cursor="Hand"
+                Style="{StaticResource MaterialDesignIconButton}">
+                <materialDesign:PackIcon
+                    Width="40"
+                    Height="40"
+                    Foreground="White"
+                    Kind="Close" />
+            </Button>
+        </StackPanel>
+
     </Grid>
 </Window>
