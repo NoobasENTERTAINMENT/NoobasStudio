@@ -32,7 +32,6 @@
             VerticalAlignment="Center"
             materialDesign:HintAssist.Hint="Your translation"
             materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden"
-            materialDesign:TextFieldAssist.HasClearButton="True"
             BorderBrush="Transparent"
             FontSize="30"
             Foreground="White"
