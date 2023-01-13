@@ -18,7 +18,7 @@ namespace NoobasStudio.Commands.Navigation
         }
         private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(_globalViewModel.CurrentSelectedItem)
+            if (e.PropertyName == nameof(_globalViewModel.CurrentSelectedIndex)
                 || e.PropertyName == nameof(_globalViewModel.Subs)
                 || e.PropertyName == nameof(_globalViewModel.YourPart)
                 || e.PropertyName == nameof(_globalViewModel.CountOfSubs)
@@ -32,32 +32,32 @@ namespace NoobasStudio.Commands.Navigation
         {
             return (_globalViewModel.Subs != null
                 && _globalViewModel.YourPart != null
-                && _globalViewModel.CurrentSelectedItem <= _globalViewModel.CountOfSubs
+                && _globalViewModel.CurrentSelectedIndex <= _globalViewModel.CountOfSubs
                 && _globalViewModel.Translation.Trim() != String.Empty
                 && _globalViewModel.Translation != null) && base.CanExecute(parameter);
         }
         public override void Execute(object parameter)
         {
-            if (_globalViewModel.CountOfSubs == _globalViewModel.CurrentSelectedItem)
+            if (_globalViewModel.CountOfSubs == _globalViewModel.CurrentSelectedIndex)
             {
-                _globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedItem] = _globalViewModel.Translation;
+                _globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedIndex] = _globalViewModel.Translation;
                 _globalViewModel.Translation = string.Empty;
                 _globalViewModel.IsTranslationEnded = true;
             }
             else
             {
-                _globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedItem] = _globalViewModel.Translation;
+                _globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedIndex] = _globalViewModel.Translation;
 
-                if (_globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedItem + 1] != null)
+                if (_globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedIndex + 1] != null)
                 {
-                    _globalViewModel.Translation = _globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedItem + 1];
+                    _globalViewModel.Translation = _globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedIndex + 1];
                 }
                 else
                 {
                     _globalViewModel.Translation = string.Empty;
                 }
                 
-                _globalViewModel.CurrentSelectedItem++;
+                _globalViewModel.CurrentSelectedIndex++;
             }
         }
     }

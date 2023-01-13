@@ -21,7 +21,7 @@ namespace NoobasStudio.Commands
         }
         private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(_globalViewModel.CurrentSelectedItem)
+            if (e.PropertyName == nameof(_globalViewModel.CurrentSelectedIndex)
                 || e.PropertyName == nameof(_globalViewModel.Subs)
                 || e.PropertyName == nameof(_globalViewModel.YourPart)
                 || e.PropertyName == nameof(_globalViewModel.CountOfSubs)
@@ -35,20 +35,20 @@ namespace NoobasStudio.Commands
         {
             return (_globalViewModel.Subs != null
                 && _globalViewModel.YourPart != null
-                && _globalViewModel.CurrentSelectedItem < _globalViewModel.CountOfSubs
+                && _globalViewModel.CurrentSelectedIndex < _globalViewModel.CountOfSubs
                 && _globalViewModel.Translation.Trim() != String.Empty
                 && _globalViewModel.Translation != null) && base.CanExecute(parameter);
         }
         public override void Execute(object parameter)
         {
-            if(_globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedItem+1] == null)
+            if(_globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedIndex + 1] == null)
             {
-                _globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedItem + 1] = String.Empty;
+                _globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedIndex + 1] = String.Empty;
             }
-            if (_globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedItem] != null)
+            if (_globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedIndex] != null)
             {
-                _globalViewModel.CurrentSelectedItem++;
-                _globalViewModel.Translation = _globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedItem];
+                _globalViewModel.CurrentSelectedIndex++;
+                _globalViewModel.Translation = _globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedIndex];
             }
         }
     }

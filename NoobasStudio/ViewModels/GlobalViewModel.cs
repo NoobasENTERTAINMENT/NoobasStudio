@@ -56,16 +56,16 @@ namespace NoobasStudio.ViewModels
         }
 
 
-        private int _currentSelectedItem;
-        public int CurrentSelectedItem
+        private int _currentSelectedIndex;
+        public int CurrentSelectedIndex
         {
             get
             {
-                return _currentSelectedItem;
+                return _currentSelectedIndex;
             }
             set
             {
-                _currentSelectedItem = value;
+                _currentSelectedIndex = value;
                 OnPropertyChanged();
             }
         }
@@ -85,7 +85,7 @@ namespace NoobasStudio.ViewModels
             }
         }
 
-        private List<string> _yourpart;
+        private List<string> _yourpart = new List<string>();
         public List<string> YourPart
         {
             get

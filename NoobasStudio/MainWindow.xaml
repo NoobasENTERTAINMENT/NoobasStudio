@@ -33,6 +33,22 @@
                 Height="60"
                 Margin="10"
                 Command="{Binding WindowStateChangeCommand}"
+                CommandParameter="Minus"
+                Cursor="Hand"
+                Style="{StaticResource MaterialDesignIconButton}">
+                <materialDesign:PackIcon
+                    Width="40"
+                    Height="40"
+                    Margin="0,-1,0,0"
+                    Foreground="White"
+                    Kind="Minus" />
+            </Button>
+            <Button
+                Width="60"
+                Height="60"
+                Margin="10"
+                Command="{Binding WindowStateChangeCommand}"
+                CommandParameter="Rectangle"
                 Cursor="Hand"
                 Style="{StaticResource MaterialDesignIconButton}">
                 <materialDesign:PackIcon
