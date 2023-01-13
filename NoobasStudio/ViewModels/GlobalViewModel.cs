@@ -85,7 +85,7 @@ namespace NoobasStudio.ViewModels
             }
         }
 
-        private List<string> _yourpart = new List<string>();
+        private List<string> _yourpart;
         public List<string> YourPart
         {
             get

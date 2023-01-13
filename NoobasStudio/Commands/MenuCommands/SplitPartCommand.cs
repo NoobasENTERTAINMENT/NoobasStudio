@@ -11,16 +11,18 @@ namespace NoobasStudio.Commands
 {
     public class SplitPartCommand : CommandBase
     {
-        readonly GlobalViewModel _globalViewModel;
-        readonly SplitEnglishSubs _splitEnglishSubs = new SplitEnglishSubs();
+        GlobalViewModel _globalViewModel;
+        SplitEnglishSubs _splitEnglishSubs = new SplitEnglishSubs();
         public SplitPartCommand(GlobalViewModel globalViewModel)
         {
             _globalViewModel = globalViewModel;
         }
         public override void Execute(object parameter)
         {
+            _globalViewModel.YourPart = null;
             _globalViewModel.YourPart = _splitEnglishSubs.SplitTextToParts(_globalViewModel.Subs, parameter);
             _globalViewModel.CountOfSubs = _globalViewModel.YourPart.Count();
+            _globalViewModel.CurrentSelectedIndex = 0;
         }
     }
 }
