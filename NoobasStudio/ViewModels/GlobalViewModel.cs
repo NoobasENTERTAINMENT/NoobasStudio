@@ -85,6 +85,19 @@ namespace NoobasStudio.ViewModels
             }
         }
 
+        private List<string> _yourpart;
+        public List<string> YourPart
+        {
+            get
+            {
+                return _yourpart;
+            }
+            set
+            {
+                _yourpart = value;
+                OnPropertyChanged();
+            }
+        }
 
         private string _translation = String.Empty;
         public string Translation

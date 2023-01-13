@@ -48,13 +48,12 @@
                             Orientation="Vertical">
 
                             <ListBox
-                                SelectionChanged="SubsListView_SelectionChanged"
                                 x:Name="SubsListView"
                                 MaxHeight="130"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 IsHitTestVisible="False"
-                                ItemsSource="{Binding Subs, UpdateSourceTrigger=PropertyChanged}"
+                                ItemsSource="{Binding YourPart, UpdateSourceTrigger=PropertyChanged}"
                                 ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                                 ScrollViewer.VerticalScrollBarVisibility="Hidden"
                                 SelectedIndex="{Binding CurrentSelectedItem}">

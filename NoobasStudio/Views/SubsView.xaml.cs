@@ -27,14 +27,14 @@ namespace NoobasStudio.Views
             InitializeComponent();
         }
          
-        private void SubsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if(SubsListView.SelectedIndex < SubsListView.Items.Count-1)
-            {
-                int index = SubsListView.SelectedIndex+1;
-                object item = SubsListView.Items.GetItemAt(index);
-                SubsListView.ScrollIntoView(item);
-            }
-        }
+        //private void SubsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if(SubsListView.SelectedIndex < SubsListView.Items.Count-1)
+        //    {
+        //        int index = SubsListView.SelectedIndex+1;
+        //        object item = SubsListView.Items.GetItemAt(index);
+        //        SubsListView.ScrollIntoView(item);
+        //    }
+        //}
     }
 }

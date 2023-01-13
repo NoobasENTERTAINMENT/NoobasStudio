@@ -13,7 +13,7 @@ namespace NoobasStudio.Commands
         GlobalViewModel _globalViewModel;
         public override bool CanExecute(object parameter)
         {
-            return (_globalViewModel.CurrentSelectedItem != 0 && _globalViewModel.Subs != null) && base.CanExecute(parameter);
+            return (_globalViewModel.CurrentSelectedItem != 0 && _globalViewModel.Subs != null && _globalViewModel.YourPart != null) && base.CanExecute(parameter);
         }
         public PreviousLineCommand(GlobalViewModel globalViewModel)
         {
@@ -23,7 +23,9 @@ namespace NoobasStudio.Commands
 
         private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == nameof(_globalViewModel.CurrentSelectedItem) || e.PropertyName == nameof(_globalViewModel.Subs))
+            if(e.PropertyName == nameof(_globalViewModel.CurrentSelectedItem) 
+                || e.PropertyName == nameof(_globalViewModel.Subs)
+                || e.PropertyName == nameof(_globalViewModel.YourPart))
             {
                 OnCanExecuteChanged();
             }

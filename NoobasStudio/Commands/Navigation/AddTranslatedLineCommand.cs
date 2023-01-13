@@ -20,6 +20,7 @@ namespace NoobasStudio.Commands.Navigation
         {
             if (e.PropertyName == nameof(_globalViewModel.CurrentSelectedItem)
                 || e.PropertyName == nameof(_globalViewModel.Subs)
+                || e.PropertyName == nameof(_globalViewModel.YourPart)
                 || e.PropertyName == nameof(_globalViewModel.CountOfSubs)
                 || e.PropertyName == nameof(_globalViewModel.Translation)
                 || e.PropertyName == nameof(_globalViewModel.IsTranslationEnded))
@@ -30,6 +31,7 @@ namespace NoobasStudio.Commands.Navigation
         public override bool CanExecute(object parameter)
         {
             return (_globalViewModel.Subs != null
+                && _globalViewModel.YourPart != null
                 && _globalViewModel.CurrentSelectedItem <= _globalViewModel.CountOfSubs
                 && _globalViewModel.Translation.Trim() != String.Empty
                 && _globalViewModel.Translation != null) && base.CanExecute(parameter);
