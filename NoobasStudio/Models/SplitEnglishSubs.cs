@@ -11,6 +11,7 @@ namespace NoobasStudio.Models
         readonly List<string> yourPart = new List<string>();
         public List<string> SplitTextToParts(List<string> subs, object part)
         {
+            yourPart.Clear();
             switch (part)
             {
                 case "1":
