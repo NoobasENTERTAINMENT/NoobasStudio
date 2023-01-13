@@ -171,6 +171,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\MenuCommands\ExportTxtCommand.cs" />
     <Compile Include="Commands\Navigation\CloseCommand.cs" />
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\MenuCommands\CreateProjectCommand.cs" />
@@ -186,6 +187,7 @@
     <Compile Include="Commands\Navigation\WindowStateChangeCommand.cs" />
     <Compile Include="Extensions\ItemsControlExtensions.cs" />
     <Compile Include="Exceptions\InvalidSubsException.cs" />
+    <Compile Include="Models\ExportFileText.cs" />
     <Compile Include="Models\SplitEnglishSubs.cs" />
     <Compile Include="Models\Subs.cs" />
     <Compile Include="ViewModels\GlobalViewModel.cs" />

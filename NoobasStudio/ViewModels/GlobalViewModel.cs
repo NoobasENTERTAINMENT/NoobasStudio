@@ -27,6 +27,7 @@ namespace NoobasStudio.ViewModels
             FileMenuItemCommand = new FileMenuItemCommand(this);
             EditMenuItemCommand = new EditMenuItemCommand(this);
             AddTranslatedLineCommand = new AddTranslatedLineCommand(this);
+            ExportTxtCommand = new ExportTxtCommand(this);
         }
 
         public ICommand LoadSubsCommand { get; }
@@ -39,6 +40,7 @@ namespace NoobasStudio.ViewModels
         public ICommand EditMenuItemCommand { get; }
         public ICommand SaveProjectCommand { get; }
         public ICommand AddTranslatedLineCommand { get; }
+        public ICommand ExportTxtCommand { get; }
 
 
         private bool _isProjectCreated = false;
