@@ -14,7 +14,7 @@ namespace NoobasStudio.Models
         public void ExportFile(string[] translatedText)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "txt files (*.txt)|*.txt";
+            saveFileDialog.Filter = "*.txt|*.txt";
             saveFileDialog.Title = "Export Translation";
             saveFileDialog.RestoreDirectory = true;
             saveFileDialog.ShowDialog();

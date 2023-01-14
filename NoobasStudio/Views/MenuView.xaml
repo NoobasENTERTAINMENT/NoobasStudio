@@ -26,7 +26,7 @@
                 FontWeight="Bold"
                 Foreground="White"
                 Header="File">
-                <MenuItem Header="Export translation as .txt" Command="{Binding ExportTxtCommand}" />
+                <MenuItem Command="{Binding ExportTxtCommand}" Header="Export translation as .txt" />
             </MenuItem>
             <MenuItem
                 Command="{Binding SubtitlesMenuItemCommand}"
@@ -36,7 +36,7 @@
                 Header="Subtitles">
                 <MenuItem Header="Load">
                     <MenuItem Command="{Binding LoadSubsCommand}" Header="As a .txt file" />
-                    <MenuItem Header="As a URL from YouTube" ToolTip="Get subtitles from YouTube video" />
+                    <TextBox materialDesign:HintAssist.Hint="As a URL from YouTube" ToolTip="Get subtitles from YouTube video" />
                 </MenuItem>
             </MenuItem>
             <MenuItem

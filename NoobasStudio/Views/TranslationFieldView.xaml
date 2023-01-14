@@ -14,10 +14,10 @@
             Height="40"
             Margin="10"
             Padding="0"
-            Command="{Binding }"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             materialDesign:ButtonAssist.CornerRadius="30"
+            Command="{Binding}"
             Style="{StaticResource MaterialDesignFlatButton}">
             <materialDesign:PackIcon
                 Width="40"

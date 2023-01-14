@@ -5,10 +5,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:views="clr-namespace:NoobasStudio.Views" xmlns:viewmodels="clr-namespace:NoobasStudio.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
+    xmlns:viewmodels="clr-namespace:NoobasStudio.ViewModels"
+    xmlns:views="clr-namespace:NoobasStudio.Views"
     Title="Noobas Translator"
     Width="1200"
     Height="750"
+    d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
     Background="#FF2F1A5F"
     Icon="Images/TranslatorLogo.png"
     ResizeMode="NoResize"
@@ -17,61 +19,83 @@
     WindowStyle="None"
     mc:Ignorable="d">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="165*" />
-            <RowDefinition Height="52*" />
-        </Grid.RowDefinitions>
-        <views:MenuView Grid.Row="0" DataContext="{Binding CurrentViewModel}" />
-        <views:SubsView Grid.Row="0" DataContext="{Binding CurrentViewModel}" />
-        <views:TranslationFieldView Grid.Row="1" DataContext="{Binding CurrentViewModel}" />
+        <ContentControl Grid.Row="0" Content="{Binding CurrentViewModel}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type viewmodels:GlobalViewModel}">
+                    <views:MenuView />
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
+
+        <ContentControl Grid.Row="0" Content="{Binding CurrentViewModel}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type viewmodels:GlobalViewModel}">
+                    <views:SubsView />
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
+
+        <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type viewmodels:GlobalViewModel}">
+                    <views:TranslationFieldView />
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
+
         <StackPanel
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Orientation="Horizontal">
             <Button
-                Width="60"
-                Height="60"
+                Width="40"
+                Height="40"
                 Margin="10"
                 Command="{Binding WindowStateChangeCommand}"
                 CommandParameter="Minus"
                 Cursor="Hand"
                 Style="{StaticResource MaterialDesignIconButton}">
                 <materialDesign:PackIcon
-                    Width="40"
-                    Height="40"
+                    Width="30"
+                    Height="30"
                     Margin="0,-1,0,0"
                     Foreground="White"
                     Kind="Minus" />
             </Button>
             <Button
-                Width="60"
-                Height="60"
+                Width="40"
+                Height="40"
                 Margin="10"
                 Command="{Binding WindowStateChangeCommand}"
                 CommandParameter="Rectangle"
                 Cursor="Hand"
                 Style="{StaticResource MaterialDesignIconButton}">
                 <materialDesign:PackIcon
-                    Width="40"
-                    Height="40"
+                    Width="30"
+                    Height="30"
                     Margin="0,-1,0,0"
                     Foreground="White"
                     Kind="RectangleOutline" />
             </Button>
             <Button
-                Width="60"
-                Height="60"
+                Width="40"
+                Height="40"
                 Margin="10"
                 Command="{Binding CloseCommand}"
                 Cursor="Hand"
                 Style="{StaticResource MaterialDesignIconButton}">
                 <materialDesign:PackIcon
-                    Width="40"
-                    Height="40"
+                    Width="30"
+                    Height="30"
                     Foreground="White"
                     Kind="Close" />
             </Button>
         </StackPanel>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="165*" />
+            <RowDefinition Height="52*" />
+        </Grid.RowDefinitions>
 
     </Grid>
 </Window>
