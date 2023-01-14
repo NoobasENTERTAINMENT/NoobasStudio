@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace NoobasStudio.Views
 {
     /// <summary>
-    /// Логика взаимодействия для GoogleTranslatorView.xaml
+    /// Логика взаимодействия для TranslationFieldAndGoogleTranslateView.xaml
     /// </summary>
-    public partial class GoogleTranslatorView : UserControl
+    public partial class TranslationFieldAndGoogleTranslateView : UserControl
     {
-        public GoogleTranslatorView()
+        public TranslationFieldAndGoogleTranslateView()
         {
             InitializeComponent();
         }

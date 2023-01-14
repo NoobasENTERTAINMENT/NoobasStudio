@@ -1,10 +1,12 @@
 ﻿using NoobasStudio.Commands;
 using NoobasStudio.Commands.Navigation;
+using NoobasStudio.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace NoobasStudio.ViewModels
@@ -19,7 +21,7 @@ namespace NoobasStudio.ViewModels
             CurrentViewModel = new GlobalViewModel();
             CloseCommand = new CloseCommand();
             WindowStateChangeCommand = new WindowStateChangeCommand(this);
-        }
+    }
 
         private string _windowState = "Normal";
         public string WindowState

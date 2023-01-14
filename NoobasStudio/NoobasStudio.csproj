@@ -193,17 +193,14 @@
     <Compile Include="ViewModels\GlobalViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="Views\GoogleTranslatorView.xaml.cs">
-      <DependentUpon>GoogleTranslatorView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SubsView.xaml.cs">
       <DependentUpon>SubsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TranslationFieldView.xaml.cs">
-      <DependentUpon>TranslationFieldView.xaml</DependentUpon>
+    <Compile Include="Views\TranslationFieldAndGoogleTranslateView.xaml.cs">
+      <DependentUpon>TranslationFieldAndGoogleTranslateView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -217,10 +214,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\GoogleTranslatorView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\MenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -229,7 +222,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TranslationFieldView.xaml">
+    <Page Include="Views\TranslationFieldAndGoogleTranslateView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
