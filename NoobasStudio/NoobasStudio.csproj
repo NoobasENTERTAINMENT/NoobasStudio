@@ -181,6 +181,7 @@
     <Compile Include="Commands\MenuCommands\SubtitlesMenuItemCommand.cs" />
     <Compile Include="Commands\Navigation\AddTranslatedLineCommand.cs" />
     <Compile Include="Commands\Navigation\NextLineCommand.cs" />
+    <Compile Include="Commands\Navigation\OpenTranslatorCommand.cs" />
     <Compile Include="Commands\Navigation\PreviousLineCommand.cs" />
     <Compile Include="Commands\MenuCommands\SaveProjectCommand.cs" />
     <Compile Include="Commands\MenuCommands\SplitPartCommand.cs" />
@@ -192,7 +193,11 @@
     <Compile Include="Models\Subs.cs" />
     <Compile Include="ViewModels\GlobalViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\TranslatorViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\GoogleTranslatorView.xaml.cs">
+      <DependentUpon>GoogleTranslatorView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
@@ -214,6 +219,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\GoogleTranslatorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

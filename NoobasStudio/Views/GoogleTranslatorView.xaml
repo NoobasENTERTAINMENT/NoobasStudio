@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="NoobasStudio.Views.GoogleTranslatorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NoobasStudio.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" 
+             d:DesignWidth="1200">
+    <Grid Background="{StaticResource NooViolet}">
+        <Button
+            Height="40"
+            Margin="10"
+            Padding="0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            materialDesign:ButtonAssist.CornerRadius="30"
+            Style="{StaticResource MaterialDesignFlatButton}">
+            <materialDesign:PackIcon
+                Width="40"
+                Height="40"
+                Foreground="#FF969696"
+                Kind="CircleArrows" />
+        </Button>
+        <StackPanel Orientation="Horizontal">
+            <TextBox
+            Text="{Binding English}"
+            Width="550"
+            Height="50"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            materialDesign:HintAssist.Hint="Что переведем?"
+            materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden"
+            BorderBrush="Transparent"
+            FontSize="30"
+            Foreground="White"
+            MaxLength="150"
+            TextAlignment="Center">
+
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Return" Command="{Binding AddTranslatedLineCommand}" />
+                </TextBox.InputBindings>
+
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type materialDesign:SmartHint}">
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <materialDesign:PackIcon Kind="SwapHorizontal"
+                                     Foreground="Gray"
+                                     VerticalAlignment="Center"
+                                     Height="50"
+                                     Width="50"/>
+            <TextBlock
+            Width="550"
+            Height="50"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            materialDesign:HintAssist.Hint="Translated"
+            materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden"
+            FontSize="30"
+            Foreground="White"
+            Text="{Binding Russian}"
+            TextAlignment="Center">
+
+                <TextBlock.Resources>
+                    <Style TargetType="{x:Type materialDesign:SmartHint}">
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                    </Style>
+                </TextBlock.Resources>
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>
