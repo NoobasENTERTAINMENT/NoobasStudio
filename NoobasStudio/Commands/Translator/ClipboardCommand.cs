@@ -18,7 +18,10 @@ namespace NoobasStudio.Commands
 
         public override void Execute(object parameter)
         {
-            Clipboard.SetText(_globalViewModel.Result);
+            if (_globalViewModel.Message != null)
+            {
+                Clipboard.SetText(_globalViewModel.Result);
+            }
         }
     }
 }
