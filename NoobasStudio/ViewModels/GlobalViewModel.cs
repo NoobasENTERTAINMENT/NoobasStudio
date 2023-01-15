@@ -28,6 +28,7 @@ namespace NoobasStudio.ViewModels
             EditMenuItemCommand = new EditMenuItemCommand(this);
             AddTranslatedLineCommand = new AddTranslatedLineCommand(this);
             ExportTxtCommand = new ExportTxtCommand(this);
+            SwapLanguageCommand = new SwapLanguage(this);
         }
 
         public ICommand LoadSubsCommand { get; }
@@ -41,31 +42,60 @@ namespace NoobasStudio.ViewModels
         public ICommand SaveProjectCommand { get; }
         public ICommand AddTranslatedLineCommand { get; }
         public ICommand ExportTxtCommand { get; }
+        public ICommand SwapLanguageCommand { get; }
+
+
         Translator translator = new Translator();
 
-        private string _english;
-        public string English
+        private string _translatorField = "en";
+        public string TranslatorField
         {
             get
             {
-                return _english;
+                return _translatorField;
             }
             set
             {
-                _english = value;
-                OnPropertyChanged(nameof(Russian));
+                _translatorField = value;
+                OnPropertyChanged();
             }
         }
-        private string _russian;
-        public string Russian
+        private string _translatorResultField = "ru";
+        public string TranslatorResultField
         {
             get
             {
-                return translator.TranslateText("en", "ru", English);
+                return _translatorResultField;
             }
             set
             {
-                _russian = value;
+                _translatorResultField = value;
+                OnPropertyChanged();
+            }
+        }
+        private string _message;
+        public string Message
+        {
+            get
+            {
+                return _message;
+            }
+            set
+            {
+                _message = value;
+                OnPropertyChanged(nameof(Result));
+            }
+        }
+        private string _result;
+        public string Result
+        {
+            get
+            {
+                return translator.TranslateText(TranslatorField, TranslatorResultField, Message);
+            }
+            set
+            {
+                _result = value;
                 OnPropertyChanged();
             }
         }

@@ -61,6 +61,7 @@
                 <Grid Background="{StaticResource NooViolet}">
                     <StackPanel Orientation="Horizontal">
                         <TextBox
+                            Tag="{Binding TranslatorField}"
                             Width="550"
                             Height="50"
                             Margin="40,0,40,0"
@@ -72,7 +73,7 @@
                             FontSize="30"
                             Foreground="White"
                             MaxLength="150"
-                            Text="{Binding English, UpdateSourceTrigger=PropertyChanged}"
+                            Text="{Binding Message, UpdateSourceTrigger=PropertyChanged}"
                             TextAlignment="Center">
 
                             <TextBox.Resources>
@@ -81,13 +82,18 @@
                                 </Style>
                             </TextBox.Resources>
                         </TextBox>
-                        <materialDesign:PackIcon
+                        <Button
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            Command="{Binding SwapLanguageCommand}">
+                            <materialDesign:PackIcon
                             Width="50"
                             Height="50"
                             VerticalAlignment="Center"
                             Foreground="Gray"
                             Kind="SwapHorizontal" />
+                        </Button>
                         <TextBlock
+                            Tag="{Binding TranslatorResultField}"
                             TextWrapping="Wrap"
                             Width="450"
                             Height="50"
@@ -98,7 +104,7 @@
                             materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden"
                             FontSize="30"
                             Foreground="White"
-                            Text="{Binding Russian, UpdateSourceTrigger=PropertyChanged}"
+                            Text="{Binding Result, UpdateSourceTrigger=PropertyChanged}"
                             TextAlignment="Center">
 
                             <TextBlock.Resources>

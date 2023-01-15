@@ -186,6 +186,7 @@
     <Compile Include="Commands\MenuCommands\SaveProjectCommand.cs" />
     <Compile Include="Commands\MenuCommands\SplitPartCommand.cs" />
     <Compile Include="Commands\Navigation\WindowStateChangeCommand.cs" />
+    <Compile Include="Commands\SwapLanguage.cs" />
     <Compile Include="Extensions\ItemsControlExtensions.cs" />
     <Compile Include="Exceptions\InvalidSubsException.cs" />
     <Compile Include="Models\ExportFileText.cs" />
