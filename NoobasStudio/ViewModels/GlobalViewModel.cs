@@ -28,7 +28,8 @@ namespace NoobasStudio.ViewModels
             EditMenuItemCommand = new EditMenuItemCommand(this);
             AddTranslatedLineCommand = new AddTranslatedLineCommand(this);
             ExportTxtCommand = new ExportTxtCommand(this);
-            SwapLanguageCommand = new SwapLanguage(this);
+            SwapLanguageCommand = new SwapLanguageCommand(this);
+            ClipboardCommand = new ClipboardCommand(this);
         }
 
         public ICommand LoadSubsCommand { get; }
@@ -43,7 +44,7 @@ namespace NoobasStudio.ViewModels
         public ICommand AddTranslatedLineCommand { get; }
         public ICommand ExportTxtCommand { get; }
         public ICommand SwapLanguageCommand { get; }
-
+        public ICommand ClipboardCommand { get; }
 
         Translator translator = new Translator();
 

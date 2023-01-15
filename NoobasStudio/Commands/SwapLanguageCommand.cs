@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace NoobasStudio.Commands
 {
-    public class SwapLanguage : CommandBase
+    public class SwapLanguageCommand : CommandBase
     {
         readonly GlobalViewModel _globalViewModel;
-        public SwapLanguage(GlobalViewModel globalViewModel)
+        public SwapLanguageCommand(GlobalViewModel globalViewModel)
         {
             _globalViewModel = globalViewModel;
         }

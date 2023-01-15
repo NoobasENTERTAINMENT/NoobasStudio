@@ -62,7 +62,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBox
                             Tag="{Binding TranslatorField}"
-                            Width="550"
+                            Width="480"
                             Height="50"
                             Margin="40,0,40,0"
                             HorizontalAlignment="Center"
@@ -114,7 +114,8 @@
                             </TextBlock.Resources>
                         </TextBlock>
                     </StackPanel>
-                    <Button
+                    <StackPanel Orientation="Vertical">
+                        <Button
                         ToolTip="Switch back"
                         Height="40"
                         Margin="10,10,20,10"
@@ -124,16 +125,32 @@
                         materialDesign:ButtonAssist.CornerRadius="30"
                         Command="{x:Static materialDesign:Flipper.FlipCommand}"
                         Style="{StaticResource MaterialDesignFlatButton}">
-                        <materialDesign:PackIcon
+                            <materialDesign:PackIcon
                             Width="40"
                             Height="40"
                             Foreground="#FF969696"
                             Kind="CircleArrows" />
-                    </Button>
+                        </Button>
+                        <Button
+                        ToolTip="Copy translation"
+                        Height="40"
+                        Margin="10,10,20,10"
+                        Padding="0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        materialDesign:ButtonAssist.CornerRadius="30"
+                        Command="{Binding ClipboardCommand}"
+                        Style="{StaticResource MaterialDesignFlatButton}">
+                            <materialDesign:PackIcon
+                            Width="40"
+                            Height="40"
+                            Foreground="#FF969696"
+                            Kind="Clipboard" />
+                        </Button>
+                    </StackPanel>
                 </Grid>
             </materialDesign:Flipper.BackContent>
         </materialDesign:Flipper>
 
     </Grid>
-
 </UserControl>
