@@ -16,36 +16,16 @@ namespace NoobasStudio.Commands.Navigation
         }
         public override void Execute(object parameter)
         {
-            switch(parameter)
+            if (_mainWindowViewModel.WindowState == "Normal")
             {
-                case "Rectangle":
-                    if (_mainWindowViewModel.WindowState == "Normal")
-                    {
-                        _mainWindowViewModel.WindowState = "Maximized";
-                        return;
-                    }
-                    if (_mainWindowViewModel.WindowState == "Maximized")
-                    {
-                        _mainWindowViewModel.WindowState = "Normal";
-                        return;
-                    }
-                    break;
-                case "Minus":
-                    if (_mainWindowViewModel.WindowState == "Normal")
-                    {
-                        _mainWindowViewModel.WindowState = "Minimized";
-                        return;
-                    }
-                    if (_mainWindowViewModel.WindowState == "Maximized")
-                    {
-                        _mainWindowViewModel.WindowState = "Minimized";
-                        return;
-                    }
-                    break;
-                default:
-                    return;
+                _mainWindowViewModel.WindowState = "Minimized";
+                return;
             }
-            
+            if (_mainWindowViewModel.WindowState == "Maximized")
+            {
+                _mainWindowViewModel.WindowState = "Minimized";
+                return;
+            }
         }
     }
 }

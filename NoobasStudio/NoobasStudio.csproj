@@ -172,7 +172,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\ClipboardCommand.cs" />
+    <Compile Include="Commands\Translator\ClipboardCommand.cs" />
     <Compile Include="Commands\MenuCommands\ExportTxtCommand.cs" />
     <Compile Include="Commands\Navigation\CloseCommand.cs" />
     <Compile Include="Commands\CommandBase.cs" />
@@ -187,7 +187,7 @@
     <Compile Include="Commands\MenuCommands\SaveProjectCommand.cs" />
     <Compile Include="Commands\MenuCommands\SplitPartCommand.cs" />
     <Compile Include="Commands\Navigation\WindowStateChangeCommand.cs" />
-    <Compile Include="Commands\SwapLanguageCommand.cs" />
+    <Compile Include="Commands\Translator\SwapLanguageCommand.cs" />
     <Compile Include="Extensions\ItemsControlExtensions.cs" />
     <Compile Include="Exceptions\InvalidSubsException.cs" />
     <Compile Include="Models\ExportFileText.cs" />

@@ -40,7 +40,6 @@
                         </TextBox.Resources>
                     </TextBox>
                     <Button
-                        ToolTip="Switch to G-translator"
                         Height="40"
                         Margin="10,10,20,10"
                         Padding="0"
@@ -48,7 +47,8 @@
                         VerticalAlignment="Top"
                         materialDesign:ButtonAssist.CornerRadius="30"
                         Command="{x:Static materialDesign:Flipper.FlipCommand}"
-                        Style="{StaticResource MaterialDesignFlatButton}">
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        ToolTip="Switch to G-translator">
                         <materialDesign:PackIcon
                             Width="40"
                             Height="40"
@@ -59,9 +59,11 @@
             </materialDesign:Flipper.FrontContent>
             <materialDesign:Flipper.BackContent>
                 <Grid Background="{StaticResource NooViolet}">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
                         <TextBox
-                            Tag="{Binding TranslatorField}"
                             Width="480"
                             Height="50"
                             Margin="40,0,40,0"
@@ -73,6 +75,7 @@
                             FontSize="30"
                             Foreground="White"
                             MaxLength="150"
+                            Tag="{Binding TranslatorField}"
                             Text="{Binding Message, UpdateSourceTrigger=PropertyChanged}"
                             TextAlignment="Center">
 
@@ -82,19 +85,15 @@
                                 </Style>
                             </TextBox.Resources>
                         </TextBox>
-                        <Button
-                            Style="{StaticResource MaterialDesignFlatButton}"
-                            Command="{Binding SwapLanguageCommand}">
+                        <Button Command="{Binding SwapLanguageCommand}" Style="{StaticResource MaterialDesignFlatButton}">
                             <materialDesign:PackIcon
-                            Width="50"
-                            Height="50"
-                            VerticalAlignment="Center"
-                            Foreground="Gray"
-                            Kind="SwapHorizontal" />
+                                Width="50"
+                                Height="50"
+                                VerticalAlignment="Center"
+                                Foreground="Gray"
+                                Kind="SwapHorizontal" />
                         </Button>
                         <TextBlock
-                            Tag="{Binding TranslatorResultField}"
-                            TextWrapping="Wrap"
                             Width="450"
                             Height="50"
                             Margin="40,0,40,0"
@@ -104,8 +103,10 @@
                             materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden"
                             FontSize="30"
                             Foreground="White"
+                            Tag="{Binding TranslatorResultField}"
                             Text="{Binding Result, UpdateSourceTrigger=PropertyChanged}"
-                            TextAlignment="Center">
+                            TextAlignment="Center"
+                            TextWrapping="Wrap">
 
                             <TextBlock.Resources>
                                 <Style TargetType="{x:Type materialDesign:SmartHint}">
@@ -114,38 +115,37 @@
                             </TextBlock.Resources>
                         </TextBlock>
                     </StackPanel>
-                    <StackPanel Orientation="Vertical">
-                        <Button
-                        ToolTip="Switch back"
-                        Height="40"
+                    <StackPanel
                         Margin="10,10,20,10"
-                        Padding="0"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Top"
-                        materialDesign:ButtonAssist.CornerRadius="30"
-                        Command="{x:Static materialDesign:Flipper.FlipCommand}"
-                        Style="{StaticResource MaterialDesignFlatButton}">
-                            <materialDesign:PackIcon
-                            Width="40"
+                        Orientation="Vertical">
+                        <Button
                             Height="40"
-                            Foreground="#FF969696"
-                            Kind="CircleArrows" />
+                            Padding="0"
+                            materialDesign:ButtonAssist.CornerRadius="30"
+                            Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            ToolTip="Switch back">
+                            <materialDesign:PackIcon
+                                Width="40"
+                                Height="40"
+                                Foreground="#FF969696"
+                                Kind="CircleArrows" />
                         </Button>
                         <Button
-                        ToolTip="Copy translation"
-                        Height="40"
-                        Margin="10,10,20,10"
-                        Padding="0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top"
-                        materialDesign:ButtonAssist.CornerRadius="30"
-                        Command="{Binding ClipboardCommand}"
-                        Style="{StaticResource MaterialDesignFlatButton}">
-                            <materialDesign:PackIcon
-                            Width="40"
                             Height="40"
-                            Foreground="#FF969696"
-                            Kind="Clipboard" />
+                            Margin="0,17,0,0"
+                            Padding="0"
+                            materialDesign:ButtonAssist.CornerRadius="30"
+                            Command="{Binding ClipboardCommand}"
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            ToolTip="Copy translation">
+                            <materialDesign:PackIcon
+                                Width="40"
+                                Height="40"
+                                Foreground="#FF969696"
+                                Kind="Clipboard" />
                         </Button>
                     </StackPanel>
                 </Grid>

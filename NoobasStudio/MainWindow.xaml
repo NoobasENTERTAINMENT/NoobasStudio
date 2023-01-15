@@ -13,12 +13,12 @@
     d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
     Background="#FF2F1A5F"
     Icon="Images/TranslatorLogo.png"
+    MouseDown="Window_MouseDown"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     WindowState="{Binding WindowState}"
     WindowStyle="None"
-    mc:Ignorable="d"
-    MouseDown="Window_MouseDown">
+    mc:Ignorable="d">
     <Grid>
         <ContentControl Grid.Row="0" Content="{Binding CurrentViewModel}">
             <ContentControl.Resources>
@@ -52,7 +52,6 @@
                 Height="40"
                 Margin="10"
                 Command="{Binding WindowStateChangeCommand}"
-                CommandParameter="Minus"
                 Cursor="Hand"
                 Style="{StaticResource MaterialDesignIconButton}">
                 <materialDesign:PackIcon
@@ -61,21 +60,6 @@
                     Margin="0,-1,0,0"
                     Foreground="White"
                     Kind="Minus" />
-            </Button>
-            <Button
-                Width="40"
-                Height="40"
-                Margin="10"
-                Command="{Binding WindowStateChangeCommand}"
-                CommandParameter="Rectangle"
-                Cursor="Hand"
-                Style="{StaticResource MaterialDesignIconButton}">
-                <materialDesign:PackIcon
-                    Width="30"
-                    Height="30"
-                    Margin="0,-1,0,0"
-                    Foreground="White"
-                    Kind="RectangleOutline" />
             </Button>
             <Button
                 Width="40"
