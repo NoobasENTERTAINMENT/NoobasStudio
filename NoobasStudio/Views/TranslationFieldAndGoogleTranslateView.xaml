@@ -40,6 +40,7 @@
                         </TextBox.Resources>
                     </TextBox>
                     <Button
+                        ToolTip="Switch to G-translator"
                         Height="40"
                         Margin="10,10,20,10"
                         Padding="0"
@@ -65,7 +66,7 @@
                             Margin="40,0,40,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            materialDesign:HintAssist.Hint="Что переведем?"
+                            materialDesign:HintAssist.Hint="What do you want to translate?"
                             materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden"
                             BorderBrush="Transparent"
                             FontSize="30"
@@ -107,6 +108,7 @@
                         </TextBlock>
                     </StackPanel>
                     <Button
+                        ToolTip="Switch back"
                         Height="40"
                         Margin="10,10,20,10"
                         Padding="0"
