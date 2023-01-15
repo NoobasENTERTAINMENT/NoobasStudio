@@ -72,7 +72,7 @@
                             FontSize="30"
                             Foreground="White"
                             MaxLength="150"
-                            Text="{Binding English}"
+                            Text="{Binding English, UpdateSourceTrigger=PropertyChanged}"
                             TextAlignment="Center">
 
                             <TextBox.Resources>
@@ -88,6 +88,7 @@
                             Foreground="Gray"
                             Kind="SwapHorizontal" />
                         <TextBlock
+                            TextWrapping="Wrap"
                             Width="450"
                             Height="50"
                             Margin="40,0,40,0"
@@ -97,7 +98,7 @@
                             materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden"
                             FontSize="30"
                             Foreground="White"
-                            Text="{Binding Russian}"
+                            Text="{Binding Russian, UpdateSourceTrigger=PropertyChanged}"
                             TextAlignment="Center">
 
                             <TextBlock.Resources>

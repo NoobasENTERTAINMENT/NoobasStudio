@@ -41,6 +41,34 @@ namespace NoobasStudio.ViewModels
         public ICommand SaveProjectCommand { get; }
         public ICommand AddTranslatedLineCommand { get; }
         public ICommand ExportTxtCommand { get; }
+        Translator translator = new Translator();
+
+        private string _english;
+        public string English
+        {
+            get
+            {
+                return _english;
+            }
+            set
+            {
+                _english = value;
+                OnPropertyChanged(nameof(Russian));
+            }
+        }
+        private string _russian;
+        public string Russian
+        {
+            get
+            {
+                return translator.TranslateText("en", "ru", English);
+            }
+            set
+            {
+                _russian = value;
+                OnPropertyChanged();
+            }
+        }
 
 
         private bool _isProjectCreated = false;
