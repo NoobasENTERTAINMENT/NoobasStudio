@@ -67,7 +67,7 @@
                             Margin="40,0,40,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            materialDesign:HintAssist.Hint="What do you want to translate?"
+                            materialDesign:HintAssist.Hint="{Binding TranslationToolTip}"
                             materialDesign:TextFieldAssist.CharacterCounterVisibility="Hidden"
                             BorderBrush="Transparent"
                             FontSize="30"

@@ -47,6 +47,20 @@ namespace NoobasStudio.ViewModels
 
         Translator translator = new Translator();
 
+        private string _translationToolTip = "What translating?";
+        public string TranslationToolTip
+        {
+            get
+            {
+                return _translationToolTip;
+            }
+            set
+            {
+                _translationToolTip = value;
+                OnPropertyChanged();
+            }
+        }
+
         private string _translatorField = "en";
         public string TranslatorField
         {

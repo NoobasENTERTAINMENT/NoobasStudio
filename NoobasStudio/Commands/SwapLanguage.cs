@@ -19,6 +19,10 @@ namespace NoobasStudio.Commands
             string temp = _globalViewModel.TranslatorResultField;
             _globalViewModel.TranslatorResultField = _globalViewModel.TranslatorField;
             _globalViewModel.TranslatorField = temp;
+            if (_globalViewModel.TranslatorField == "ru")
+                _globalViewModel.TranslationToolTip = "Что переведем?";
+            else
+                _globalViewModel.TranslationToolTip = "What translating?";
         }
     }
 }
