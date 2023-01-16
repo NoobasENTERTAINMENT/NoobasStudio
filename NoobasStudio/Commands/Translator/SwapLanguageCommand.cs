@@ -16,9 +16,7 @@ namespace NoobasStudio.Commands
         }
         public override void Execute(object parameter)
         {
-            string temp = _globalViewModel.TranslatorResultField;
-            _globalViewModel.TranslatorResultField = _globalViewModel.TranslatorField;
-            _globalViewModel.TranslatorField = temp;
+            (_globalViewModel.TranslatorField, _globalViewModel.TranslatorResultField) = (_globalViewModel.TranslatorResultField, _globalViewModel.TranslatorField);
             if (_globalViewModel.TranslatorField == "ru")
                 _globalViewModel.TranslationToolTip = "Что переведем?";
             else

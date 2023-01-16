@@ -10,7 +10,7 @@ namespace NoobasStudio.Commands
 {
     public class PreviousLineCommand : CommandBase
     {
-        GlobalViewModel _globalViewModel;
+        readonly GlobalViewModel _globalViewModel;
         public override bool CanExecute(object parameter)
         {
             return (_globalViewModel.CurrentSelectedIndex != 0 && _globalViewModel.Subs != null && _globalViewModel.YourPart != null) && base.CanExecute(parameter);

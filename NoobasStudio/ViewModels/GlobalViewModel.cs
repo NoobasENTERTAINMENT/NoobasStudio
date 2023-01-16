@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -46,7 +47,9 @@ namespace NoobasStudio.ViewModels
         public ICommand SwapLanguageCommand { get; }
         public ICommand ClipboardCommand { get; }
 
-        Translator translator = new Translator();
+
+        private readonly Translator translator = new Translator();
+
 
         private string _translationToolTip = "What translating?";
         public string TranslationToolTip
@@ -62,6 +65,7 @@ namespace NoobasStudio.ViewModels
             }
         }
 
+
         private string _translatorField = "en";
         public string TranslatorField
         {
@@ -75,6 +79,8 @@ namespace NoobasStudio.ViewModels
                 OnPropertyChanged();
             }
         }
+
+
         private string _translatorResultField = "ru";
         public string TranslatorResultField
         {
@@ -88,6 +94,8 @@ namespace NoobasStudio.ViewModels
                 OnPropertyChanged();
             }
         }
+
+
         private string _message;
         public string Message
         {
@@ -101,19 +109,9 @@ namespace NoobasStudio.ViewModels
                 OnPropertyChanged(nameof(Result));
             }
         }
-        private string _result;
-        public string Result
-        {
-            get
-            {
-                return translator.TranslateText(TranslatorField, TranslatorResultField, Message);
-            }
-            set
-            {
-                _result = value;
-                OnPropertyChanged();
-            }
-        }
+
+
+        public string Result => translator.TranslateText(TranslatorField, TranslatorResultField, Message);
 
 
         private bool _isProjectCreated = false;
@@ -160,6 +158,7 @@ namespace NoobasStudio.ViewModels
             }
         }
 
+
         private List<string> _yourpart;
         public List<string> YourPart
         {
@@ -173,6 +172,7 @@ namespace NoobasStudio.ViewModels
                 OnPropertyChanged();
             }
         }
+
 
         private string _translation = String.Empty;
         public string Translation
@@ -217,6 +217,7 @@ namespace NoobasStudio.ViewModels
                 OnPropertyChanged();
             }
         }
+
 
         private string[] _translatedText;
         public string[] TranslatedText
