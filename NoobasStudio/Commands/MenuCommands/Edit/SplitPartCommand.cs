@@ -19,11 +19,20 @@ namespace NoobasStudio.Commands
         }
         public override void Execute(object parameter)
         {
-            _globalViewModel.YourPart = null;
-            _globalViewModel.YourPart = _splitEnglishSubs.SplitTextToParts(_globalViewModel.Subs, parameter);
-            _globalViewModel.CountOfSubs = _globalViewModel.YourPart.Count();
-            _globalViewModel.TranslatedText = new string[_globalViewModel.CountOfSubs + 1];
-            _globalViewModel.CurrentSelectedIndex = 0;
+            try
+            {
+                _globalViewModel.YourPart = null;
+                _globalViewModel.YourPart = _splitEnglishSubs.SplitTextToParts(_globalViewModel.Subs, parameter);
+                _globalViewModel.CountOfSubs = _globalViewModel.YourPart.Count();
+                _globalViewModel.TranslatedText = new string[_globalViewModel.CountOfSubs + 1];
+                _globalViewModel.CurrentSelectedIndex = 0;
+                _globalViewModel.Part = parameter.ToString();
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            
         }
     }
 }

@@ -14,23 +14,23 @@ namespace NoobasStudio.Models
             yourPart.Clear();
             switch (part)
             {
-                case "1":
+                case "2 person 1 part":
                     for (int i = 0; i < subs.Count / 2; i++)
                         yourPart.Add(subs[i]);
                     break;
-                case "2":
+                case "2 person 2 part":
                     for (int i = subs.Count / 2; i < subs.Count; i++)
                         yourPart.Add(subs[i]);
                     break;
-                case "3":
+                case "3 person 1 part":
                     for (int i = 0; i < subs.Count / 3; i++)
                         yourPart.Add(subs[i]);
                     break;
-                case "4":
+                case "3 person 2 part":
                     for (int i = subs.Count / 3; i < subs.Count / 3 * 2; i++)
                         yourPart.Add(subs[i]);
                     break;
-                case "5":
+                case "3 person 3 part":
                     for (int i = subs.Count / 3 * 2; i < subs.Count / 3 * 3; i++)
                         yourPart.Add(subs[i]);
                     break;

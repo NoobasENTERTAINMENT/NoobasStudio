@@ -10,76 +10,91 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid>
-        <Menu Margin="25" materialDesign:MenuAssist.TopLevelMenuItemHeight="25">
-            <MenuItem
-                FontSize="20"
-                FontWeight="Bold"
-                Foreground="White"
-                Header="Project">
-                <MenuItem Command="{Binding CreateProjectCommand}" Header="Create" />
-                <MenuItem Header="Load" />
-                <MenuItem Command="{Binding SaveProjectCommand}" Header="Save" />
-            </MenuItem>
-            <MenuItem
-                Command="{Binding FileMenuItemCommand}"
-                FontSize="20"
-                FontWeight="Bold"
-                Foreground="White"
-                Header="File">
-                <MenuItem Command="{Binding ExportTxtCommand}" Header="Export translation as .txt" />
-            </MenuItem>
-            <MenuItem
-                Command="{Binding SubtitlesMenuItemCommand}"
-                FontSize="20"
-                FontWeight="Bold"
-                Foreground="White"
-                Header="Subtitles">
-                <MenuItem Header="Load">
-                    <MenuItem Command="{Binding LoadSubsCommand}" Header="As a .txt file" />
-                    <TextBox materialDesign:HintAssist.Hint="As a URL from YouTube" ToolTip="Get subtitles from YouTube video" />
+        <StackPanel Margin="25" Orientation="Horizontal">
+            <Menu
+                Margin="0,3,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                materialDesign:MenuAssist.TopLevelMenuItemHeight="25">
+                <MenuItem
+                    FontSize="20"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    Header="Project">
+                    <MenuItem Command="{Binding CreateProjectCommand}" Header="Create" />
+                    <MenuItem Command="{Binding LoadProjectCommand}" Header="Load" />
+                    <MenuItem Command="{Binding SaveProjectCommand}" Header="Save" />
                 </MenuItem>
-            </MenuItem>
-            <MenuItem
-                Command="{Binding EditMenuItemCommand}"
-                FontSize="20"
-                FontWeight="Bold"
-                Foreground="White"
-                Header="Edit">
-                <MenuItem Header="Split parts">
-                    <MenuItem Header="For 2 persons">
-                        <MenuItem
-                            Command="{Binding SplitPartCommand}"
-                            CommandParameter="1"
-                            Header="Part №1" />
-                        <MenuItem
-                            Command="{Binding SplitPartCommand}"
-                            CommandParameter="2"
-                            Header="Part №2" />
-                    </MenuItem>
-                    <MenuItem Header="For 3 persons">
-                        <MenuItem
-                            Command="{Binding SplitPartCommand}"
-                            CommandParameter="3"
-                            Header="Part №1" />
-                        <MenuItem
-                            Command="{Binding SplitPartCommand}"
-                            CommandParameter="4"
-                            Header="Part №2" />
-                        <MenuItem
-                            Command="{Binding SplitPartCommand}"
-                            CommandParameter="5"
-                            Header="Part №3" />
+                <MenuItem
+                    Command="{Binding FileMenuItemCommand}"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    Header="File">
+                    <MenuItem Command="{Binding ExportTxtCommand}" Header="Export translation as .txt" />
+                </MenuItem>
+                <MenuItem
+                    Command="{Binding SubtitlesMenuItemCommand}"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    Header="Subtitles">
+                    <MenuItem Header="Load">
+                        <MenuItem Command="{Binding LoadSubsCommand}" Header="As a .txt file" />
+                        <TextBox materialDesign:HintAssist.Hint="As a URL from YouTube" ToolTip="Get subtitles from YouTube video" />
                     </MenuItem>
                 </MenuItem>
-            </MenuItem>
-            <Menu.Resources>
-                <SolidColorBrush x:Key="MaterialDesignPaper" Color="#FF190040" />
-            </Menu.Resources>
-            <Menu.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Foreground="White" />
-                </DataTemplate>
-            </Menu.ItemTemplate>
-        </Menu>
+                <MenuItem
+                    Command="{Binding EditMenuItemCommand}"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    Header="Edit">
+                    <MenuItem Header="Split parts">
+                        <MenuItem Header="For 2 persons">
+                            <MenuItem
+                                Command="{Binding SplitPartCommand}"
+                                CommandParameter="2 person 1 part"
+                                Header="Part №1" />
+                            <MenuItem
+                                Command="{Binding SplitPartCommand}"
+                                CommandParameter="2 person 2 part"
+                                Header="Part №2" />
+                        </MenuItem>
+                        <MenuItem Header="For 3 persons">
+                            <MenuItem
+                                Command="{Binding SplitPartCommand}"
+                                CommandParameter="3 person 1 part"
+                                Header="Part №1" />
+                            <MenuItem
+                                Command="{Binding SplitPartCommand}"
+                                CommandParameter="3 person 2 part"
+                                Header="Part №2" />
+                            <MenuItem
+                                Command="{Binding SplitPartCommand}"
+                                CommandParameter="3 person 3 part"
+                                Header="Part №3" />
+                        </MenuItem>
+                    </MenuItem>
+                </MenuItem>
+                <Menu.Resources>
+                    <SolidColorBrush x:Key="MaterialDesignPaper" Color="#FF190040" />
+                </Menu.Resources>
+                <Menu.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Foreground="White" />
+                    </DataTemplate>
+                </Menu.ItemTemplate>
+            </Menu>
+        </StackPanel>
+        <TextBlock
+            Margin="0,13,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            FontSize="32"
+            FontWeight="Bold"
+            Foreground="#FFE0E0E0"
+            Text="{Binding ProjectName}"
+            TextAlignment="Center" />
     </Grid>
 </UserControl>

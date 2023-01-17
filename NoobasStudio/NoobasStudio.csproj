@@ -194,22 +194,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\MenuCommands\Project\LoadProjectCommand.cs" />
     <Compile Include="Commands\Translator\ClipboardCommand.cs" />
-    <Compile Include="Commands\MenuCommands\ExportTxtCommand.cs" />
+    <Compile Include="Commands\MenuCommands\File\ExportTxtCommand.cs" />
     <Compile Include="Commands\Navigation\CloseCommand.cs" />
     <Compile Include="Commands\CommandBase.cs" />
-    <Compile Include="Commands\MenuCommands\CreateProjectCommand.cs" />
-    <Compile Include="Commands\MenuCommands\LoadSubsCommand.cs" />
+    <Compile Include="Commands\MenuCommands\Project\CreateProjectCommand.cs" />
+    <Compile Include="Commands\MenuCommands\Subtitles\LoadSubsCommand.cs" />
     <Compile Include="Commands\MenuCommands\EditMenuItemCommand.cs" />
     <Compile Include="Commands\MenuCommands\FileMenuItemCommand.cs" />
     <Compile Include="Commands\MenuCommands\SubtitlesMenuItemCommand.cs" />
     <Compile Include="Commands\Navigation\AddTranslatedLineCommand.cs" />
     <Compile Include="Commands\Navigation\NextLineCommand.cs" />
     <Compile Include="Commands\Navigation\PreviousLineCommand.cs" />
-    <Compile Include="Commands\MenuCommands\SaveProjectCommand.cs" />
-    <Compile Include="Commands\MenuCommands\SplitPartCommand.cs" />
+    <Compile Include="Commands\MenuCommands\Project\SaveProjectCommand.cs" />
+    <Compile Include="Commands\MenuCommands\Edit\SplitPartCommand.cs" />
     <Compile Include="Commands\Navigation\WindowStateChangeCommand.cs" />
     <Compile Include="Commands\Translator\SwapLanguageCommand.cs" />
+    <Compile Include="Models\ProjectData.cs" />
     <Compile Include="Extensions\ItemsControlExtensions.cs" />
     <Compile Include="Exceptions\InvalidSubsException.cs" />
     <Compile Include="Models\ExportFileText.cs" />

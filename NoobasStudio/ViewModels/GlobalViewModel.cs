@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.PlatformUI;
 using NoobasStudio.Commands;
 using NoobasStudio.Commands.MenuCommands;
+using NoobasStudio.Commands.MenuCommands.Project;
 using NoobasStudio.Commands.Navigation;
 using NoobasStudio.Models;
 using System;
@@ -25,6 +26,7 @@ namespace NoobasStudio.ViewModels
             CreateProjectCommand = new CreateProjectCommand(this);
             SubtitlesMenuItemCommand = new SubtitlesMenuItemCommand(this);
             SaveProjectCommand = new SaveProjectCommand(this);
+            LoadProjectCommand = new LoadProjectCommand(this);
             FileMenuItemCommand = new FileMenuItemCommand(this);
             EditMenuItemCommand = new EditMenuItemCommand(this);
             AddTranslatedLineCommand = new AddTranslatedLineCommand(this);
@@ -38,6 +40,7 @@ namespace NoobasStudio.ViewModels
         public ICommand PreviousLineCommand { get; }
         public ICommand SplitPartCommand { get; }
         public ICommand CreateProjectCommand { get; }
+        public ICommand LoadProjectCommand { get; }
         public ICommand SubtitlesMenuItemCommand { get; }
         public ICommand FileMenuItemCommand { get; }
         public ICommand EditMenuItemCommand { get; }
@@ -49,6 +52,21 @@ namespace NoobasStudio.ViewModels
 
 
         private readonly Translator translator = new Translator();
+
+
+        private string _projectName;
+        public string ProjectName
+        {
+            get
+            {
+                return _projectName;
+            }
+            set
+            {
+                _projectName = value;
+                OnPropertyChanged();
+            }
+        }
 
 
         private string _translationToolTip = "What translating?";
@@ -232,5 +250,8 @@ namespace NoobasStudio.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public string Part { get; set; }
+        public string PathOfProject { get; set; }
     }
 }
