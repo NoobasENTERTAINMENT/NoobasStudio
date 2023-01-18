@@ -18,6 +18,9 @@ namespace NoobasStudio.Models
         public List<string> LoadSubs()
         {
             OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "*.txt|*.txt";
+            ofd.Title = "Load subtitles";
+            ofd.RestoreDirectory = true;
             ofd.ShowDialog();
             
             string RealFileName = ofd.SafeFileName;
