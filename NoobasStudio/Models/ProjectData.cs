@@ -6,7 +6,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
 namespace NoobasStudio.Core
@@ -15,60 +17,125 @@ namespace NoobasStudio.Core
     {
         public string Title { get; set; }
         public List<string> Subs { get; set; }
+        public List<string> YourPart { get; set; }
         public string[] TranslatedText { get; set; }
         public int CurrentSelectedIndex { get; set; }
         public string Part { get; set; }
-        public int Progress { get; set; } 
+        public int Progress { get; set; }
+        public bool IsProjectCreated { get; set; }
+        public bool IsTranslationEnded { get; set; }
+        public int CountOfSubs { get; set; }
+        public string PathOfProject { get; set; }
 
         public void CreateJSON(GlobalViewModel globalViewModel)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "*.json|*.json";
-            saveFileDialog.Title = "Choose path of project";
-            saveFileDialog.RestoreDirectory = true;
-            saveFileDialog.ShowDialog();
-
-            Title = Path.GetFileName(saveFileDialog.FileName);
-            Subs = globalViewModel.YourPart;
-            TranslatedText = globalViewModel.TranslatedText;
-            CurrentSelectedIndex = globalViewModel.CurrentSelectedIndex;
-            Part = globalViewModel.Part;
-            Progress = 0;
-
-            using (StreamWriter file = File.CreateText(saveFileDialog.FileName))
+            try
             {
-                JsonSerializer serializer = new JsonSerializer();
-                serializer.Serialize(file, this);
-            }
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "*.json|*.json";
+                saveFileDialog.Title = "Choose path of project";
+                saveFileDialog.RestoreDirectory = true;
+                saveFileDialog.ShowDialog();
 
-            globalViewModel.IsProjectCreated = true;
-            globalViewModel.ProjectName = Path.GetFileNameWithoutExtension(saveFileDialog.FileName);
-            globalViewModel.PathOfProject = saveFileDialog.FileName;
+                Title = Path.GetFileNameWithoutExtension(saveFileDialog.FileName);
+                Subs = null;
+                YourPart = null;
+                TranslatedText = null;
+                CurrentSelectedIndex = 0;
+                Part = null;
+                Progress = 0;
+                IsProjectCreated = true;
+                IsTranslationEnded = true;
+                CountOfSubs = 0;
+                PathOfProject = saveFileDialog.FileName;
+
+                using (StreamWriter file = File.CreateText(saveFileDialog.FileName))
+                {
+                    Newtonsoft.Json.JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
+                    serializer.Serialize(file, this);
+                }
+
+                string jsonString = File.ReadAllText(PathOfProject);
+                ProjectData projectData = JsonConvert.DeserializeObject<ProjectData>(jsonString);
+
+                globalViewModel.ProjectName = Title = projectData.Title;
+                globalViewModel.YourPart = YourPart = projectData.YourPart;
+                globalViewModel.Subs = Subs = projectData.Subs;
+                globalViewModel.TranslatedText = TranslatedText = projectData.TranslatedText;
+                globalViewModel.CurrentSelectedIndex = CurrentSelectedIndex = projectData.CurrentSelectedIndex;
+                globalViewModel.Part = Part = projectData.Part;
+                globalViewModel.IsProjectCreated = IsProjectCreated = projectData.IsProjectCreated;
+                globalViewModel.IsTranslationEnded = IsTranslationEnded = projectData.IsTranslationEnded;
+                globalViewModel.CountOfSubs = CountOfSubs = projectData.CountOfSubs;
+                globalViewModel.PathOfProject = PathOfProject = projectData.PathOfProject;
+                Progress = projectData.Progress;
+            }
+            catch (Exception)
+            {
+                return;
+            }
         }
         public void SaveJSON(GlobalViewModel globalViewModel)
         {
-            Title = Path.GetFileName(globalViewModel.ProjectName);
-            Subs = globalViewModel.YourPart;
-            TranslatedText = globalViewModel.TranslatedText;
-            CurrentSelectedIndex = globalViewModel.CurrentSelectedIndex;
-            Part = globalViewModel.Part;
-            Progress = Convert.ToInt32(Convert.ToDouble(CurrentSelectedIndex) / Convert.ToDouble(Subs.Count) * 100);
-
-            string result = string.Empty;
-            using (StreamReader r = new StreamReader(globalViewModel.PathOfProject))
+            try
             {
-                var json = r.ReadToEnd();
-                var jobj = JObject.Parse(json);
-                jobj["Title"] = Title;
-                jobj["Subs"] = JsonConvert.SerializeObject(Subs);
-                jobj["TranslatedText"] = JsonConvert.SerializeObject(TranslatedText);
-                jobj["CurrentSelectedIndex"] = CurrentSelectedIndex;
-                jobj["Part"] = Part;
-                jobj["Progress"] = Progress;
-                result = jobj.ToString();
-                Console.WriteLine(result);
+                Title = Path.GetFileName(globalViewModel.ProjectName);
+                Subs = globalViewModel.Subs;
+                YourPart = globalViewModel.YourPart;
+                TranslatedText = globalViewModel.TranslatedText;
+                CurrentSelectedIndex = globalViewModel.CurrentSelectedIndex;
+                Part = globalViewModel.Part;
+                Progress = Convert.ToInt32(Convert.ToDouble(CurrentSelectedIndex) / Convert.ToDouble(Subs.Count) * 100);
+                IsProjectCreated = globalViewModel.IsProjectCreated;
+                IsTranslationEnded = globalViewModel.IsTranslationEnded;
+                CountOfSubs = globalViewModel.CountOfSubs;
+                PathOfProject = globalViewModel.PathOfProject;
+
+                FileStream createStream = File.Create(globalViewModel.PathOfProject);
+                System.Text.Json.JsonSerializer.Serialize(createStream, this);
+                createStream.Dispose();
             }
-            File.WriteAllText(globalViewModel.PathOfProject, result);
+            catch (Exception)
+            {
+                return;
+            }
         }
+        public void LoadJSON(GlobalViewModel globalViewModel)
+        {
+            try
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Filter = "*.json|*.json";
+                ofd.Title = "Load project";
+                ofd.RestoreDirectory = true;
+                ofd.ShowDialog();
+
+                string FilePath = ofd.FileName;
+
+                string jsonString = File.ReadAllText(FilePath);
+                ProjectData projectData = JsonConvert.DeserializeObject<ProjectData>(jsonString);
+
+                globalViewModel.ProjectName = Title = projectData.Title;
+                globalViewModel.YourPart = YourPart = projectData.YourPart;
+                globalViewModel.Subs = Subs = projectData.Subs;
+                globalViewModel.TranslatedText = TranslatedText = projectData.TranslatedText;
+                globalViewModel.CurrentSelectedIndex = CurrentSelectedIndex = projectData.CurrentSelectedIndex;
+                globalViewModel.Part = Part = projectData.Part;
+                globalViewModel.IsProjectCreated = IsProjectCreated = projectData.IsProjectCreated;
+                globalViewModel.IsTranslationEnded = IsTranslationEnded = projectData.IsTranslationEnded;
+                globalViewModel.CountOfSubs = CountOfSubs = projectData.CountOfSubs;
+                globalViewModel.PathOfProject = PathOfProject = projectData.PathOfProject;
+                Progress = projectData.Progress;
+            }
+            catch(Exception)
+            {
+                return;
+            }
+        }
+        /*public bool IsHaveUnsavedChanges(GlobalViewModel globalViewModel)
+        {
+
+        }*/
     }
+    
 }

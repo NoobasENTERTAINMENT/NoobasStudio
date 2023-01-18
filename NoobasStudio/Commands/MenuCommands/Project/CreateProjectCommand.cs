@@ -26,15 +26,7 @@ namespace NoobasStudio.Commands
         }
         public override void Execute(object parameter)
         {
-            try
-            {
-                _projectData.CreateJSON(_globalViewModel);
-            }
-            catch (Exception)
-            {
-                return;
-            }
-            
+            _projectData.CreateJSON(_globalViewModel); 
         }
     }
 }
