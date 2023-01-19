@@ -19,6 +19,12 @@
     WindowState="{Binding WindowState}"
     WindowStyle="None"
     mc:Ignorable="d">
+    <Window.InputBindings>
+        <KeyBinding
+            Key="S"
+            Command="{Binding SaveProjectCommand}"
+            Modifiers="Control" />
+    </Window.InputBindings>
     <Grid>
         <ContentControl Grid.Row="0" Content="{Binding CurrentViewModel}">
             <ContentControl.Resources>

@@ -46,8 +46,9 @@
                         VerticalAlignment="Top"
                         materialDesign:ButtonAssist.CornerRadius="30"
                         Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                        Cursor="Hand"
                         Style="{StaticResource MaterialDesignFlatButton}"
-                        ToolTip="Switch to G-translator">
+                        ToolTip="Switch to Google Translator">
                         <materialDesign:PackIcon
                             Width="40"
                             Height="40"

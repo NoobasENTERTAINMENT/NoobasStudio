@@ -1,12 +1,5 @@
 ﻿using NoobasStudio.Commands;
 using NoobasStudio.Commands.Navigation;
-using NoobasStudio.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace NoobasStudio.ViewModels
@@ -15,11 +8,13 @@ namespace NoobasStudio.ViewModels
     {
         public ICommand CloseCommand { get; }
         public ICommand WindowStateChangeCommand { get; }
-        public ViewModelBase CurrentViewModel { get; }
+        public ICommand SaveProjectCommand { get; }
+        public GlobalViewModel CurrentViewModel { get; }
         public MainWindowViewModel()
         {
             CurrentViewModel = new GlobalViewModel();
-            CloseCommand = new CloseCommand();
+            CloseCommand = new CloseCommand(CurrentViewModel);
+            SaveProjectCommand = CurrentViewModel.SaveProjectCommand;
             WindowStateChangeCommand = new WindowStateChangeCommand(this);
     }
 

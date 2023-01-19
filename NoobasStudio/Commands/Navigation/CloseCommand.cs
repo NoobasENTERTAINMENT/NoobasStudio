@@ -1,16 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NoobasStudio.Core;
+using NoobasStudio.ViewModels;
+using System.Windows.Forms;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace NoobasStudio.Commands
 {
     public class CloseCommand : CommandBase
     {
+        private readonly GlobalViewModel _globalViewModel;
+        private ProjectData _projectData;
+        public CloseCommand(GlobalViewModel globalViewModel)
+        {
+            _globalViewModel = globalViewModel;
+            _projectData = new ProjectData();
+        }
         public override void Execute(object parameter)
         {
-            App.Current.Shutdown();
+            bool isHaveUnsavedChanges = _projectData.IsHaveUnsavedChanges(_globalViewModel);
+            if (isHaveUnsavedChanges)
+            {
+                if (MessageBox.Show($"Save changes to {_projectData.Title}.json?", "Confirm", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    _projectData.SaveJSON(_globalViewModel);
+                }
+            }
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }

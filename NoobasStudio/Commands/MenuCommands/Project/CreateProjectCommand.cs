@@ -1,12 +1,5 @@
-﻿using Newtonsoft.Json;
-using NoobasStudio.Core;
+﻿using NoobasStudio.Core;
 using NoobasStudio.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NoobasStudio.Commands
@@ -26,6 +19,14 @@ namespace NoobasStudio.Commands
         }
         public override void Execute(object parameter)
         {
+            bool isHaveUnsavedChanges = _projectData.IsHaveUnsavedChanges(_globalViewModel);
+            if (isHaveUnsavedChanges)
+            {
+                if(MessageBox.Show($"Save changes to {_projectData.Title}.json?", "Confirm", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes) 
+                {
+                    _projectData.SaveJSON(_globalViewModel);
+                }
+            }
             _projectData.CreateJSON(_globalViewModel); 
         }
     }

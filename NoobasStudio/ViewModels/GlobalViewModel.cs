@@ -1,16 +1,10 @@
-﻿using Microsoft.VisualStudio.PlatformUI;
-using NoobasStudio.Commands;
+﻿using NoobasStudio.Commands;
 using NoobasStudio.Commands.MenuCommands;
 using NoobasStudio.Commands.MenuCommands.Project;
 using NoobasStudio.Commands.Navigation;
 using NoobasStudio.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace NoobasStudio.ViewModels
@@ -252,6 +246,7 @@ namespace NoobasStudio.ViewModels
         }
 
         public string Part { get; set; }
+        public string JsonForCompare { get; set; }
         public string PathOfProject { get; set; }
     }
 }

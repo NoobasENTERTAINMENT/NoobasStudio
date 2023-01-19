@@ -1,14 +1,8 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using NoobasStudio.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
 namespace NoobasStudio.Core
@@ -69,6 +63,8 @@ namespace NoobasStudio.Core
                 globalViewModel.CountOfSubs = CountOfSubs = projectData.CountOfSubs;
                 globalViewModel.PathOfProject = PathOfProject = projectData.PathOfProject;
                 Progress = projectData.Progress;
+
+                globalViewModel.JsonForCompare = JsonConvert.SerializeObject(this);
             }
             catch (Exception)
             {
@@ -94,6 +90,8 @@ namespace NoobasStudio.Core
                 FileStream createStream = File.Create(globalViewModel.PathOfProject);
                 System.Text.Json.JsonSerializer.Serialize(createStream, this);
                 createStream.Dispose();
+
+                globalViewModel.JsonForCompare = JsonConvert.SerializeObject(this);
             }
             catch (Exception)
             {
@@ -110,9 +108,7 @@ namespace NoobasStudio.Core
                 ofd.RestoreDirectory = true;
                 ofd.ShowDialog();
 
-                string FilePath = ofd.FileName;
-
-                string jsonString = File.ReadAllText(FilePath);
+                string jsonString = File.ReadAllText(ofd.FileName);
                 ProjectData projectData = JsonConvert.DeserializeObject<ProjectData>(jsonString);
 
                 globalViewModel.ProjectName = Title = projectData.Title;
@@ -126,16 +122,37 @@ namespace NoobasStudio.Core
                 globalViewModel.CountOfSubs = CountOfSubs = projectData.CountOfSubs;
                 globalViewModel.PathOfProject = PathOfProject = projectData.PathOfProject;
                 Progress = projectData.Progress;
+
+                globalViewModel.JsonForCompare = JsonConvert.SerializeObject(this); ;
             }
             catch(Exception)
             {
                 return;
             }
         }
-        /*public bool IsHaveUnsavedChanges(GlobalViewModel globalViewModel)
+        public bool IsHaveUnsavedChanges(GlobalViewModel globalViewModel)
         {
+            if(globalViewModel.IsProjectCreated == true && globalViewModel.YourPart != null)
+            {
+                Title = Path.GetFileName(globalViewModel.ProjectName);
+                Subs = globalViewModel.Subs;
+                YourPart = globalViewModel.YourPart;
+                TranslatedText = globalViewModel.TranslatedText;
+                CurrentSelectedIndex = globalViewModel.CurrentSelectedIndex;
+                Part = globalViewModel.Part;
+                Progress = Convert.ToInt32(Convert.ToDouble(CurrentSelectedIndex) / Convert.ToDouble(Subs.Count) * 100);
+                IsProjectCreated = globalViewModel.IsProjectCreated;
+                IsTranslationEnded = globalViewModel.IsTranslationEnded;
+                CountOfSubs = globalViewModel.CountOfSubs;
+                PathOfProject = globalViewModel.PathOfProject;
 
-        }*/
+                string jsonCurrent = JsonConvert.SerializeObject(this);
+
+                bool result = jsonCurrent != globalViewModel.JsonForCompare ? true : false;
+                return result;
+            }   
+            return false;
+        }
     }
     
 }

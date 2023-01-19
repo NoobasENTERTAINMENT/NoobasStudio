@@ -23,7 +23,10 @@
                     Header="Project">
                     <MenuItem Command="{Binding CreateProjectCommand}" Header="Create" />
                     <MenuItem Command="{Binding LoadProjectCommand}" Header="Load" />
-                    <MenuItem Command="{Binding SaveProjectCommand}" Header="Save" />
+                    <MenuItem
+                        Command="{Binding SaveProjectCommand}"
+                        Header="Save"
+                        ToolTip="Save project (CTRL+S)" />
                 </MenuItem>
                 <MenuItem
                     Command="{Binding FileMenuItemCommand}"
