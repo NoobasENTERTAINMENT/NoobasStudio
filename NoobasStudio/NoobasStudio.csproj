@@ -200,6 +200,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\MenuCommands\File\MergeJsonsCommand.cs" />
     <Compile Include="Commands\MenuCommands\Project\LoadProjectCommand.cs" />
     <Compile Include="Commands\Translator\ClipboardCommand.cs" />
     <Compile Include="Commands\MenuCommands\File\ExportTxtCommand.cs" />
@@ -217,6 +218,7 @@
     <Compile Include="Commands\MenuCommands\Edit\SplitPartCommand.cs" />
     <Compile Include="Commands\Navigation\WindowStateChangeCommand.cs" />
     <Compile Include="Commands\Translator\SwapLanguageCommand.cs" />
+    <Compile Include="Models\MergingJsons.cs" />
     <Compile Include="Models\ProjectData.cs" />
     <Compile Include="Extensions\ItemsControlExtensions.cs" />
     <Compile Include="Exceptions\InvalidSubsException.cs" />
@@ -227,6 +229,9 @@
     <Compile Include="ViewModels\GlobalViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\CraftGenerealView.xaml.cs">
+      <DependentUpon>CraftGenerealView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
@@ -248,6 +253,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\CraftGenerealView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

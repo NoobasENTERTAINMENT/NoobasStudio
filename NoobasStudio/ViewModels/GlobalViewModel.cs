@@ -1,5 +1,6 @@
 ﻿using NoobasStudio.Commands;
 using NoobasStudio.Commands.MenuCommands;
+using NoobasStudio.Commands.MenuCommands.File;
 using NoobasStudio.Commands.MenuCommands.Project;
 using NoobasStudio.Commands.Navigation;
 using NoobasStudio.Models;
@@ -27,7 +28,9 @@ namespace NoobasStudio.ViewModels
             ExportTxtCommand = new ExportTxtCommand(this);
             SwapLanguageCommand = new SwapLanguageCommand(this);
             ClipboardCommand = new ClipboardCommand(this);
+            MergeJsonsCommand = new MergeJsonsCommand(this);
         }
+
 
         public ICommand LoadSubsCommand { get; }
         public ICommand NextLineCommand { get; }
@@ -43,6 +46,7 @@ namespace NoobasStudio.ViewModels
         public ICommand ExportTxtCommand { get; }
         public ICommand SwapLanguageCommand { get; }
         public ICommand ClipboardCommand { get; }
+        public ICommand MergeJsonsCommand { get; }
 
 
         private readonly Translator translator = new Translator();
