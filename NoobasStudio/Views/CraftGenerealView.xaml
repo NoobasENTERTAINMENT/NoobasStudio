@@ -35,6 +35,7 @@
                             Orientation="Vertical">
                             <TextBlock
                                 Margin="0,5,0,0"
+                                FontFamily="/Fonts/minecraft.ttf #Minecraft Rus"
                                 FontSize="25"
                                 Foreground="#FF3A3838"
                                 Text="Merge JSON files" />
@@ -46,6 +47,7 @@
                                 Background="#FFA09172"
                                 BorderBrush="#FF3A3838"
                                 BorderThickness="2"
+                                FontFamily="/Fonts/minecraft.ttf #Minecraft Rus"
                                 FontSize="25"
                                 Foreground="White"
                                 Style="{StaticResource MaterialDesignTextBoxBase}" />
