@@ -1,4 +1,6 @@
 ﻿using NoobasStudio.Core;
+using System;
+using System.Collections.Specialized;
 using System.Windows.Controls;
 
 namespace NoobasStudio.Views
@@ -12,13 +14,9 @@ namespace NoobasStudio.Views
         {
             InitializeComponent();
         }
-
         private void SubsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SubsListView.ScrollToCenterOfView(SubsListView.SelectedItem);
         }
     }
-
-    
-
 }

@@ -53,6 +53,7 @@
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 IsHitTestVisible="False"
+                                IsSynchronizedWithCurrentItem="True"
                                 ItemsSource="{Binding YourPart, UpdateSourceTrigger=PropertyChanged}"
                                 ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                                 ScrollViewer.VerticalScrollBarVisibility="Hidden"
@@ -65,7 +66,7 @@
                                         <Setter Property="Foreground" Value="White" />
                                         <Setter Property="LayoutTransform">
                                             <Setter.Value>
-                                                <ScaleTransform x:Name="transform" />
+                                                <ScaleTransform />
                                             </Setter.Value>
                                         </Setter>
                                         <Setter Property="FontSize" Value="25" />
