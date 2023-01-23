@@ -206,6 +206,17 @@
                             </Border>
                         </Grid>
                     </StackPanel>
+                    <StackPanel>
+                        <TextBlock
+                            Margin="0,20,20,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            FontFamily="/Fonts/minecraft.ttf #Minecraft Rus"
+                            FontSize="18"
+                            FontWeight="Bold"
+                            Foreground="Red"
+                            Text="Progress in all JSON must be 100%" />
+                    </StackPanel>
                 </StackPanel>
             </Grid>
         </Border>
