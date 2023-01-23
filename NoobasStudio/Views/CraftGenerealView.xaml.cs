@@ -16,26 +16,14 @@ namespace NoobasStudio.Views
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            
-        }
-
-        private void Border_Drop(object sender, DragEventArgs e)
-        {
-            try
+            if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
             {
-                string filePath = System.IO.Path.GetFullPath("book.png");
-                if (filePath.Contains("\\bin\\Debug\\"))
-                     filePath = filePath.Replace("\\bin\\Debug\\", "\\Images\\");
-                borderProfileImage.ImageSource = new BitmapImage(new Uri(filePath, UriKind.Relative));
-            }
-            catch (Exception)
-            {
-                return;
+                DragMove();
             }
         }
     }

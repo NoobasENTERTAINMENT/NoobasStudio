@@ -12,6 +12,7 @@
     Height="250"
     FontFamily="Minecraft Rus"
     Icon="/Images/TranslatorLogo.png"
+    MouseDown="Window_MouseDown"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
@@ -73,12 +74,10 @@
                             <Border
                                 Width="50"
                                 Height="50"
-                                AllowDrop="True"
-                                Drop="Border_Drop">
+                                AllowDrop="True">
                                 <Button
                                     Width="50"
                                     Height="50"
-                                    Click="Button_Click"
                                     Style="{StaticResource MaterialDesignFlatButton}" />
                                 <Border.Background>
                                     <ImageBrush x:Name="borderProfileImage" Stretch="UniformToFill" />
@@ -233,7 +232,7 @@
             <materialDesign:PackIcon
                 Width="30"
                 Height="30"
-                Foreground="White"
+                Foreground="#FF8A8A8A"
                 Kind="Close" />
         </Button>
 
