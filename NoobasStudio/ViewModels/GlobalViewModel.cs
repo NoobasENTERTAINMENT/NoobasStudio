@@ -28,7 +28,7 @@ namespace NoobasStudio.ViewModels
             ExportTxtCommand = new ExportTxtCommand(this);
             SwapLanguageCommand = new SwapLanguageCommand(this);
             ClipboardCommand = new ClipboardCommand(this);
-            MergeJsonsCommand = new MergeJsonsCommand(this);
+            MergeJsonsCommand = new MergeJsonsCommand();
         }
 
 

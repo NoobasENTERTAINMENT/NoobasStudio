@@ -203,6 +203,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Behaviors\FadeWindowBehavior.cs" />
+    <Compile Include="Commands\AnvilCommands\LoadToCellJsonCommand.cs" />
+    <Compile Include="Commands\AnvilCommands\UnloadFinalJsonCommand.cs" />
     <Compile Include="Commands\MenuCommands\File\MergeJsonsCommand.cs" />
     <Compile Include="Commands\MenuCommands\Project\LoadProjectCommand.cs" />
     <Compile Include="Commands\Translator\ClipboardCommand.cs" />
@@ -231,6 +234,7 @@
     <Compile Include="Models\Translator.cs" />
     <Compile Include="ViewModels\GlobalViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\MergeJSON\MergeJSONViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\CraftGenerealView.xaml.cs">
       <DependentUpon>CraftGenerealView.xaml</DependentUpon>

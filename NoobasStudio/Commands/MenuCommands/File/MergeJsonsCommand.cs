@@ -12,15 +12,10 @@ namespace NoobasStudio.Commands.MenuCommands.File
 {
     public class MergeJsonsCommand : CommandBase
     {
-        readonly GlobalViewModel _globalViewModel;
         readonly MergingJsons mergeJsons = new MergingJsons();
-        public MergeJsonsCommand(GlobalViewModel globalViewModel)
-        {
-            _globalViewModel = globalViewModel;
-        }
         public override void Execute(object parameter)
         {
-            mergeJsons.MergeJsons();
+            mergeJsons.MergeJsonsOpen();
         }
     }
 }
