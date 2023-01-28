@@ -1,4 +1,5 @@
-﻿using NoobasStudio.ViewModels.MergeJSON;
+﻿using NoobasStudio.Models;
+using NoobasStudio.ViewModels.MergeJSON;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,6 @@ namespace NoobasStudio.Commands.AnvilCommands
         }
         public override void Execute(object parameter)
         {
-
         }
     }
 }
