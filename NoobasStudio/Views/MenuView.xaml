@@ -95,7 +95,7 @@
                     FontWeight="Bold"
                     Foreground="White"
                     Header="Merge"
-                    ToolTip="Create 1 .txt from all JSONS" />
+                    ToolTip="Create .txt from all JSONS" />
                 <Menu.Resources>
                     <SolidColorBrush x:Key="MaterialDesignPaper" Color="#FF190040" />
                 </Menu.Resources>

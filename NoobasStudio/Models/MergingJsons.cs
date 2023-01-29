@@ -18,8 +18,7 @@ namespace NoobasStudio.Models
 {
     public class MergingJsons
     {
-        
-        private DispatcherTimer _timer = new DispatcherTimer();
+        private string typeOfMerging = null;
         public void MergeJsonsOpen()
         {
             MergeJSONViewModel viewModel = new MergeJSONViewModel();
@@ -38,8 +37,32 @@ namespace NoobasStudio.Models
                 ofd.RestoreDirectory = true;
                 ofd.ShowDialog();
 
-                string jsonString = File.ReadAllText(ofd.FileName);
-                ProjectData projectData = JsonConvert.DeserializeObject<ProjectData>(jsonString);
+                string jsonLoadedString = File.ReadAllText(ofd.FileName);
+                ProjectData loadedJson = JsonConvert.DeserializeObject<ProjectData>(jsonLoadedString);
+
+                if(viewModel.Jsons.All(x => x == null))
+                {
+                    if (loadedJson.Part.Contains("2 person"))
+                        typeOfMerging = "2 person";
+                    else
+                        typeOfMerging = "3 person";
+                }
+
+                if(typeOfMerging == "3 person")
+                    viewModel.ThirdCellIsEnabled = true;
+
+                if (typeOfMerging == "3 person" && loadedJson.Part.Contains("2 person"))
+                {
+                    viewModel.MessageText = "Your JSON must be splitted for 3 person!";
+                    viewModel.MessageVisibility = System.Windows.Visibility.Visible;
+                    return;
+                }
+                if (typeOfMerging == "2 person" && loadedJson.Part.Contains("3 person"))
+                {
+                    viewModel.MessageText = "Your JSON must be splitted for 2 person!";
+                    viewModel.MessageVisibility = System.Windows.Visibility.Visible;
+                    return;
+                }
 
                 bool isRepeat = false;
 
@@ -47,54 +70,61 @@ namespace NoobasStudio.Models
                 {
                     if(item != null)
                     {
-                        string json1 = JsonConvert.SerializeObject(item);
-                        string json2 = JsonConvert.SerializeObject(projectData);
-                        if (json1.Equals(json2))
+                        string jsonInList = JsonConvert.SerializeObject(item);
+                        string jsonLoaded = JsonConvert.SerializeObject(loadedJson);
+
+                        if (jsonInList.Equals(jsonLoaded))
                         {
                             isRepeat = true;
 
-                            EventHandler eventHandler = (sender, e) => timer_Tick(sender, e, viewModel);
-                            _timer.Tick += eventHandler;
-                            _timer.Interval = new TimeSpan(0, 0, 0, 0, 1500);
-                            _timer.Start();
-                            viewModel.CrossVisibility = System.Windows.Visibility.Visible;
                             viewModel.MessageText = "This JSON is already exists in cells!";
                             viewModel.MessageVisibility = System.Windows.Visibility.Visible;
 
                             break;
                         }
-                    } 
+
+                        if (item.Part == loadedJson.Part)
+                        {
+                            isRepeat = true;
+
+                            viewModel.MessageText = "You need load JSON's with different parts!";
+                            viewModel.MessageVisibility = System.Windows.Visibility.Visible;
+
+                            break;
+                        }
+                    }
+                    
                 }
-                if (projectData.Progress < 100)
+                if (loadedJson.Progress < 100)
                 {
-                    EventHandler eventHandler = (sender, e) => timer_Tick(sender, e, viewModel);
-                    _timer.Tick += eventHandler;
-                    _timer.Interval = new TimeSpan(0, 0, 0, 0, 1500);
-                    _timer.Start();
                     viewModel.CrossVisibility = System.Windows.Visibility.Visible;
                     viewModel.MessageText = "Progress in your JSON must be 100%!";
                     viewModel.MessageVisibility = System.Windows.Visibility.Visible;
                 }
 
-                if (projectData.Progress >= 100 && !isRepeat)
+                if (loadedJson.Progress >= 100 && !isRepeat)
                 {
+                    viewModel.CrossVisibility = System.Windows.Visibility.Hidden;
+                    viewModel.MessageText = "";
+                    viewModel.MessageVisibility = System.Windows.Visibility.Hidden;
+
                     switch (Convert.ToInt32(parameter))
                     {
                         case 1:
                             viewModel.ImageSourceFirstCell = new BitmapImage(new Uri("\\Images\\book.png", UriKind.Relative));
-                            viewModel.FirstCellToolTip = projectData.Title;
+                            viewModel.FirstCellToolTip = loadedJson.Title;
                             break;
                         case 2:
                             viewModel.ImageSourceSecondCell = new BitmapImage(new Uri("\\Images\\book.png", UriKind.Relative));
-                            viewModel.SecondCellToolTip = projectData.Title;
+                            viewModel.SecondCellToolTip = loadedJson.Title;
                             break;
                         case 3:
                             viewModel.ImageSourceThirdCell = new BitmapImage(new Uri("\\Images\\book.png", UriKind.Relative));
-                            viewModel.ThirdCellToolTip = projectData.Title;
+                            viewModel.ThirdCellToolTip = loadedJson.Title;
                             break;
                     }
                     
-                    viewModel.Jsons[Convert.ToInt32(parameter)-1] = projectData;
+                    viewModel.Jsons[Convert.ToInt32(parameter)-1] = loadedJson;
                 }
 
                 int CountOfNulls = 0;
@@ -112,13 +142,6 @@ namespace NoobasStudio.Models
             {
                 return;
             }   
-        }
-
-        private void timer_Tick(object sender, EventArgs e, MergeJSONViewModel viewModel)
-        {
-            viewModel.CrossVisibility = System.Windows.Visibility.Hidden;
-            viewModel.MessageText = "";
-            viewModel.MessageVisibility = System.Windows.Visibility.Hidden;
         }
     }
 }

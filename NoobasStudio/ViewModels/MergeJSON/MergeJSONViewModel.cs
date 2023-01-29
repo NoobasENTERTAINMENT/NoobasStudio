@@ -177,6 +177,20 @@ namespace NoobasStudio.ViewModels.MergeJSON
             }
         }
 
+        private bool _thirdCellIsEnabled = false;
+        public bool ThirdCellIsEnabled
+        {
+            get
+            {
+                return _thirdCellIsEnabled;
+            }
+            set
+            {
+                _thirdCellIsEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
         public ProjectData[] Jsons = new ProjectData[3];
     }
 }

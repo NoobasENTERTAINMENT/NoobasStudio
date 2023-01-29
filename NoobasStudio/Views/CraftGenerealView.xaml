@@ -166,6 +166,7 @@
                                         Height="50"
                                         Command="{Binding LoadToCellJsonCommand}"
                                         CommandParameter="3"
+                                        IsEnabled="{Binding ThirdCellIsEnabled}"
                                         Style="{StaticResource MaterialDesignFlatButton}"
                                         ToolTip="{Binding ThirdCellToolTip}" />
                                 </Grid>

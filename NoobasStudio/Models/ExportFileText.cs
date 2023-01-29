@@ -9,7 +9,7 @@ namespace NoobasStudio.Models
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "*.txt|*.txt";
-            saveFileDialog.Title = "Export Translation";
+            saveFileDialog.Title = "Export translation";
             saveFileDialog.RestoreDirectory = true;
             saveFileDialog.ShowDialog();
             using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
