@@ -19,10 +19,11 @@ namespace NoobasStudio.Commands
             {
                 _globalViewModel.YourPart = null;
                 _globalViewModel.YourPart = _splitEnglishSubs.SplitTextToParts(_globalViewModel.Subs, parameter);
-                _globalViewModel.CountOfSubs = _globalViewModel.YourPart.Count();
+                _globalViewModel.CountOfSubs = _globalViewModel.YourPart.Count() - 1;
                 _globalViewModel.TranslatedText = new string[_globalViewModel.CountOfSubs + 1];
                 _globalViewModel.CurrentSelectedIndex = 0;
                 _globalViewModel.Part = parameter.ToString();
+                _globalViewModel.IsTranslationEnded= false;
             }
             catch (Exception)
             {

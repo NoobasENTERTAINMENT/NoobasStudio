@@ -53,13 +53,13 @@ namespace NoobasStudio.Models
 
                 if (typeOfMerging == "3 person" && loadedJson.Part.Contains("2 person"))
                 {
-                    viewModel.MessageText = "Your JSON must be splitted for 3 person!";
+                    viewModel.MessageText = "Your JSON must be splitted for 3 persons!";
                     viewModel.MessageVisibility = System.Windows.Visibility.Visible;
                     return;
                 }
                 if (typeOfMerging == "2 person" && loadedJson.Part.Contains("3 person"))
                 {
-                    viewModel.MessageText = "Your JSON must be splitted for 2 person!";
+                    viewModel.MessageText = "Your JSON must be splitted for 2 persons!";
                     viewModel.MessageVisibility = System.Windows.Visibility.Visible;
                     return;
                 }
