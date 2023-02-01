@@ -90,7 +90,6 @@ namespace NoobasStudio.Core
                 FileStream createStream = File.Create(globalViewModel.PathOfProject);
                 System.Text.Json.JsonSerializer.Serialize(createStream, this);
                 createStream.Dispose();
-
                 globalViewModel.JsonForCompare = JsonConvert.SerializeObject(this);
             }
             catch (Exception)

@@ -19,10 +19,14 @@ namespace NoobasStudio.Commands
             bool isHaveUnsavedChanges = _projectData.IsHaveUnsavedChanges(_globalViewModel);
             if (isHaveUnsavedChanges)
             {
-                if (MessageBox.Show($"Save changes to {_projectData.Title}.json?", "Confirm", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
+                DialogResult dialogResult = MessageBox.Show($"Save changes to {_projectData.Title}.json?", 
+                    "Confirm", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
                 {
                     _projectData.SaveJSON(_globalViewModel);
                 }
+                else if (dialogResult == DialogResult.Cancel)
+                    return;
             }
             System.Windows.Application.Current.Shutdown();
         }
