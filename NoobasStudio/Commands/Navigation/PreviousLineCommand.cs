@@ -28,6 +28,7 @@ namespace NoobasStudio.Commands
         }
         public override void Execute(object parameter)
         {
+            _globalViewModel.IsTranslationEnded = false;
             _globalViewModel.Translation = String.Empty;
             _globalViewModel.CurrentSelectedIndex--;
             _globalViewModel.Translation = _globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedIndex];
