@@ -3,6 +3,7 @@ using NoobasStudio.Commands.MenuCommands;
 using NoobasStudio.Commands.MenuCommands.File;
 using NoobasStudio.Commands.MenuCommands.Project;
 using NoobasStudio.Commands.Navigation;
+using NoobasStudio.Core;
 using NoobasStudio.Models;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace NoobasStudio.ViewModels
 {
     public class GlobalViewModel : ViewModelBase
     {
+        ProjectData _projectData = new ProjectData();
         public GlobalViewModel()
         {
             LoadSubsCommand = new LoadSubsCommand(this);
@@ -57,12 +59,26 @@ namespace NoobasStudio.ViewModels
         {
             get
             {
-                return _projectName;
+                return (_IsHaveUnsavedChanges) ? _projectName + '*' : _projectName;
             }
             set
             {
                 _projectName = value;
                 OnPropertyChanged();
+            }
+        }
+        private bool _IsHaveUnsavedChanges;
+        public bool IsHaveUnsavedChanges
+        {
+            get
+            {
+                return _projectData.IsHaveUnsavedChanges(this);
+            }
+            set
+            {
+                _IsHaveUnsavedChanges = value;
+                OnPropertyChanged("IsHaveUnsavedChanges");
+                OnPropertyChanged("TranslatedText");
             }
         }
 
