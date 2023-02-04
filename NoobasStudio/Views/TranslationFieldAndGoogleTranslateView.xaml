@@ -12,7 +12,7 @@
     <Grid>
         <materialDesign:Flipper>
             <materialDesign:Flipper.FrontContent>
-                <Grid Background="{StaticResource NooViolet}">
+                <Grid Background="{StaticResource Black}">
                     <TextBox
                         Width="700"
                         Height="50"
@@ -58,7 +58,7 @@
                 </Grid>
             </materialDesign:Flipper.FrontContent>
             <materialDesign:Flipper.BackContent>
-                <Grid Background="{StaticResource NooViolet}">
+                <Grid Background="{StaticResource Black}">
                     <StackPanel
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"

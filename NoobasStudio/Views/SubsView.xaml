@@ -38,9 +38,9 @@
                     Width="900"
                     Height="340"
                     Margin="10"
-                    Background="{StaticResource NooViolet}"
+                    Background="{StaticResource Black}"
                     CornerRadius="50"
-                    Effect="{StaticResource MaterialDesignElevationShadow6}">
+                    Effect="{StaticResource MaterialDesignElevationShadow1}">
                     <Grid>
                         <StackPanel
                             HorizontalAlignment="Center"
@@ -100,6 +100,17 @@
 
                             </ListBox>
                         </StackPanel>
+                        <Border
+                            Width="245"
+                            Height="50"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Bottom">
+                            <materialDesign:Snackbar
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Bottom"
+                                IsActive="{Binding SnackbarIsActive}"
+                                Message="Good job, your translation ended!" />
+                        </Border>
                     </Grid>
                 </Border>
                 <Button

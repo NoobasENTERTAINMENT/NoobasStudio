@@ -13,7 +13,9 @@
                     SecondaryColor="Lime" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <SolidColorBrush x:Key="NooViolet" Color="#FF150027" />
+            <SolidColorBrush x:Key="Black" Color="#FF151515" />
+            <SolidColorBrush x:Key="Black-White" Color="#FF212121" />
+            <SolidColorBrush x:Key="White" Color="White" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

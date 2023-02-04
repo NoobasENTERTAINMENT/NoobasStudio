@@ -13,7 +13,6 @@ namespace NoobasStudio.ViewModels
 {
     public class GlobalViewModel : ViewModelBase
     {
-        ProjectData _projectData = new ProjectData();
         public GlobalViewModel()
         {
             LoadSubsCommand = new LoadSubsCommand(this);
@@ -53,13 +52,12 @@ namespace NoobasStudio.ViewModels
 
         private readonly Translator translator = new Translator();
 
-
         private string _projectName;
         public string ProjectName
         {
             get
             {
-                return (_IsHaveUnsavedChanges) ? _projectName + '*' : _projectName;
+                return _projectName;
             }
             set
             {
@@ -67,12 +65,13 @@ namespace NoobasStudio.ViewModels
                 OnPropertyChanged();
             }
         }
+
         private bool _IsHaveUnsavedChanges;
         public bool IsHaveUnsavedChanges
         {
             get
             {
-                return _projectData.IsHaveUnsavedChanges(this);
+                return _IsHaveUnsavedChanges;
             }
             set
             {
@@ -261,6 +260,34 @@ namespace NoobasStudio.ViewModels
             set
             {
                 _translatedText = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _snackbarIsActive = false;
+        public bool SnackbarIsActive
+        {
+            get
+            {
+                return _snackbarIsActive;
+            }
+            set
+            {
+                _snackbarIsActive = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _starText = string.Empty;
+        public string StarText
+        {
+            get
+            {
+                return _starText;
+            }
+            set
+            {
+                _starText = value;
                 OnPropertyChanged();
             }
         }

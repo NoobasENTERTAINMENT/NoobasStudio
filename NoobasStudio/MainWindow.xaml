@@ -13,7 +13,7 @@
     Width="1200"
     Height="750"
     d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
-    Background="#FF2F1A5F"
+    Background="{StaticResource Black-White}"
     Icon="Images/TranslatorLogo.png"
     MouseDown="Window_MouseDown"
     ResizeMode="NoResize"

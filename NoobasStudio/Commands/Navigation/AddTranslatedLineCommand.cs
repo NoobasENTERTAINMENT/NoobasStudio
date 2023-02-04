@@ -1,17 +1,36 @@
-﻿using NoobasStudio.ViewModels;
+﻿using NoobasStudio.Core;
+using NoobasStudio.ViewModels;
 using System;
 using System.ComponentModel;
+using System.Timers;
 
 namespace NoobasStudio.Commands.Navigation
 {
     public class AddTranslatedLineCommand : CommandBase
     {
         readonly GlobalViewModel _globalViewModel;
+        private ProjectData _projectData = new ProjectData();
+        private static System.Timers.Timer timer;
         public AddTranslatedLineCommand(GlobalViewModel globalViewModel)
         {
             _globalViewModel = globalViewModel;
+            SetTimer();
             _globalViewModel.PropertyChanged += OnViewModelPropertyChanged;
         }
+
+        private void SetTimer()
+        {
+            timer = new System.Timers.Timer(5000);
+            timer.Elapsed += AtimerEllapsed;
+            timer.AutoReset = true;
+            timer.Enabled = true;
+        }
+
+        private void AtimerEllapsed(object sender, ElapsedEventArgs e)
+        {
+            _globalViewModel.SnackbarIsActive = false;
+        }
+
         private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(_globalViewModel.CurrentSelectedIndex)
@@ -39,6 +58,7 @@ namespace NoobasStudio.Commands.Navigation
                 _globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedIndex] = _globalViewModel.Translation;
                 _globalViewModel.Translation = string.Empty;
                 _globalViewModel.IsTranslationEnded = true;
+                _globalViewModel.SnackbarIsActive = true;          
             }
             else
             {
@@ -55,6 +75,7 @@ namespace NoobasStudio.Commands.Navigation
                 
                 _globalViewModel.CurrentSelectedIndex++;
             }
+            _projectData.IsHaveUnsavedChanges(_globalViewModel);
         }
     }
 }

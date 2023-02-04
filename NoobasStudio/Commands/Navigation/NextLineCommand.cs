@@ -1,4 +1,5 @@
-﻿using NoobasStudio.ViewModels;
+﻿using NoobasStudio.Core;
+using NoobasStudio.ViewModels;
 using System;
 using System.ComponentModel;
 
@@ -7,6 +8,7 @@ namespace NoobasStudio.Commands
     public class NextLineCommand : CommandBase
     {
         readonly GlobalViewModel _globalViewModel;
+        private ProjectData _projectData = new ProjectData();
         public NextLineCommand(GlobalViewModel globalViewModel)
         {
             _globalViewModel = globalViewModel;
@@ -43,6 +45,7 @@ namespace NoobasStudio.Commands
                 _globalViewModel.CurrentSelectedIndex++;
                 _globalViewModel.Translation = _globalViewModel.TranslatedText[_globalViewModel.CurrentSelectedIndex];
             }
+            _projectData.IsHaveUnsavedChanges(_globalViewModel);
         }
     }
 }

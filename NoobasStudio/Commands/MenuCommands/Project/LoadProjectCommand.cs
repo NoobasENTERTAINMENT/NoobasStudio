@@ -15,8 +15,7 @@ namespace NoobasStudio.Commands.MenuCommands.Project
         }
         public override void Execute(object parameter)
         {
-            bool isHaveUnsavedChanges = _projectData.IsHaveUnsavedChanges(_globalViewModel);
-            if (isHaveUnsavedChanges)
+            if (_projectData.IsHaveUnsavedChanges(_globalViewModel))
             {
                 var result = MessageBox.Show($"Save changes to {_projectData.Title}.json?", "Confirm", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
