@@ -13,6 +13,7 @@ namespace NoobasStudio.Models
         public List<string> LoadSubs()
         {
             OpenFileDialog ofd = new OpenFileDialog();
+            //ofd.Filter = "*.txt|*.txt|*.docx|*.docx|*.doc|*.doc|*.pdf|*pdf";
             ofd.Filter = "*.txt|*.txt";
             ofd.Title = "Load subtitles";
             ofd.RestoreDirectory = true;

@@ -81,7 +81,7 @@ namespace NoobasStudio.Core
                 TranslatedText = globalViewModel.TranslatedText;
                 CurrentSelectedIndex = globalViewModel.CurrentSelectedIndex;
                 Part = globalViewModel.Part;
-                Progress = Convert.ToInt32(Convert.ToDouble(CurrentSelectedIndex) / Convert.ToDouble(YourPart.Count) * 100);
+                Progress = Convert.ToInt32(Convert.ToDouble(CurrentSelectedIndex+1) / Convert.ToDouble(YourPart.Count) * 100);
                 IsProjectCreated = globalViewModel.IsProjectCreated;
                 IsTranslationEnded = globalViewModel.IsTranslationEnded;
                 CountOfSubs = globalViewModel.CountOfSubs;
