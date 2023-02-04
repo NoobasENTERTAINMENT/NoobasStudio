@@ -62,6 +62,8 @@ namespace NoobasStudio.Core
                 globalViewModel.IsTranslationEnded = IsTranslationEnded = projectData.IsTranslationEnded;
                 globalViewModel.CountOfSubs = CountOfSubs = projectData.CountOfSubs;
                 globalViewModel.PathOfProject = PathOfProject = projectData.PathOfProject;
+                globalViewModel.Translation = string.Empty;
+                globalViewModel.StarText = string.Empty;
                 Progress = projectData.Progress;
 
                 globalViewModel.JsonForCompare = JsonConvert.SerializeObject(this);

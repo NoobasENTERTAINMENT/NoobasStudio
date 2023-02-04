@@ -28,6 +28,7 @@ namespace NoobasStudio.Commands
         public override void Execute(object parameter)
         {
             _projectData.SaveJSON(_globalViewModel);
+            _projectData.IsHaveUnsavedChanges(_globalViewModel);
         }
     }
 }
