@@ -1,8 +1,12 @@
-﻿using Microsoft.Win32;
+﻿using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.parser;
+using Microsoft.Win32;
 using NoobasStudio.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace NoobasStudio.Models
@@ -13,16 +17,83 @@ namespace NoobasStudio.Models
         public List<string> LoadSubs()
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            //ofd.Filter = "*.txt|*.txt|*.docx|*.docx|*.doc|*.doc|*.pdf|*pdf";
-            ofd.Filter = "*.txt|*.txt";
+            ofd.Filter = "*.txt; *.docx; *.doc; *.pdf; *.rtf|*.txt; *.docx; *.doc; *.pdf; *.rtf";
             ofd.Title = "Load subtitles";
             ofd.RestoreDirectory = true;
             ofd.ShowDialog();
             
-            string RealFileName = ofd.SafeFileName;
             string FilePath = ofd.FileName;
+            FileInfo file = new FileInfo(FilePath);
 
-            var file = new FileInfo(FilePath);
+            switch (file.Extension)
+            {
+                case ".txt":
+                    SubsText = GetSubsFromText(FilePath, file);
+                    break;
+                case ".doc":
+                    SubsText = GetSubsFromWord(FilePath);
+                    break;
+                case ".docx":
+                    SubsText = GetSubsFromWord(FilePath);
+                    break;
+                case ".pdf":
+                    SubsText = GetSubsFromPDF(FilePath);
+                    break;
+                case ".rtf":
+                    SubsText = GetSubsFromRTF(FilePath);
+                    break;
+            }
+            
+            return SubsText;
+
+        }
+
+        private List<string> GetSubsFromRTF(string filePath)
+        {
+            throw new NotImplementedException();
+        }
+
+        private List<string> GetSubsFromPDF(string FilePath)
+        {
+            List<string> SubsText = new List<string>();
+            using (PdfReader reader = new PdfReader(FilePath))
+            {
+                for (int i = 1; i <= reader.NumberOfPages; i++)
+                {
+                    SubsText.Add(PdfTextExtractor.GetTextFromPage(reader, i));
+                }
+            }
+            SubsText = SubsText.Where(x => x != "").ToList();
+
+            return SubsText;
+        }
+
+        private List<string> GetSubsFromWord(string FilePath)
+        {
+            List<string> SubsText = new List<string>();
+            Microsoft.Office.Interop.Word.Application word = new Microsoft.Office.Interop.Word.Application();
+            object miss = System.Reflection.Missing.Value;
+            object path = FilePath;
+            object readOnly = true;
+            Microsoft.Office.Interop.Word.Document docs = word.Documents.Open(ref path, ref miss, ref readOnly, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss);
+
+            for (int i = 0; i < docs.Paragraphs.Count; i++)
+            {
+                string line = docs.Paragraphs[i + 1].Range.Text.ToString();
+                if (line.Contains("\r"))
+                    line = line.Replace("\r", string.Empty);
+                SubsText.Add(line);
+            }
+
+            SubsText = SubsText.Where(x => x != "").ToList();
+           
+            return SubsText;
+        }
+
+        private List<string> GetSubsFromText(string FilePath, FileInfo file)
+        {
+            List<string> SubsText;
+
             string AllText = File.ReadAllText(FilePath);
 
             SubsText = File.ReadAllLines(FilePath).ToList();
@@ -32,9 +103,10 @@ namespace NoobasStudio.Models
             {
                 throw new InvalidSubsException();
             }
-            return SubsText;
 
+            return SubsText;
         }
+
         private bool IsRu(string subsText)
         {
             return Regex.IsMatch(subsText, @"\p{IsCyrillic}");

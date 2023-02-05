@@ -17,7 +17,7 @@ namespace NoobasStudio.Commands.MenuCommands.Project
         {
             if (_projectData.IsHaveUnsavedChanges(_globalViewModel))
             {
-                var result = MessageBox.Show($"Save changes to {_projectData.Title}.json?", "Confirm", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                var result = MessageBox.Show($"Save changes to {_projectData.Title}?", "Confirm", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     _projectData.SaveJSON(_globalViewModel);
