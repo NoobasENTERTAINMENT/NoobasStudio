@@ -7,6 +7,7 @@ using NoobasStudio.Core;
 using NoobasStudio.Models;
 using System;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Input;
 
 namespace NoobasStudio.ViewModels
@@ -171,6 +172,7 @@ namespace NoobasStudio.ViewModels
             {
                 _currentSelectedIndex = value;
                 OnPropertyChanged();
+                OnPropertyChanged("CounterCurrentLine");
             }
         }
 
@@ -186,6 +188,7 @@ namespace NoobasStudio.ViewModels
             { 
                 _subs = value; 
                 OnPropertyChanged(); 
+                OnPropertyChanged("CounterVisibility");
             }
         }
 
@@ -246,6 +249,7 @@ namespace NoobasStudio.ViewModels
             {
                 _countOfSubs = value;
                 OnPropertyChanged();
+                OnPropertyChanged("CounterCountOfAllLines");
             }
         }
 
@@ -291,7 +295,9 @@ namespace NoobasStudio.ViewModels
                 OnPropertyChanged();
             }
         }
-
+        public Visibility CounterVisibility => Subs == null ? Visibility.Hidden : Visibility.Visible;
+        public int CounterCurrentLine => CurrentSelectedIndex + 1;
+        public int CounterCountOfAllLines => CountOfSubs + 1;
         public string Part { get; set; }
         public string JsonForCompare { get; set; }
         public string PathOfProject { get; set; }

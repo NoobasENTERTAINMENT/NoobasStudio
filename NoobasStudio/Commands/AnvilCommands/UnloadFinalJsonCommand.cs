@@ -67,13 +67,26 @@ namespace NoobasStudio.Commands.AnvilCommands
                                 secondTranslation = _mergeJSONViewModel.Jsons[i].TranslatedText;
                             }  
                         }
-                        fullTranslation = new string[firstTranslation.Length + secondTranslation.Length];
-                        Array.Copy(firstTranslation, fullTranslation, firstTranslation.Length);
-                        Array.Copy(secondTranslation, 0, fullTranslation, firstTranslation.Length, secondTranslation.Length);
+                        fullTranslation = firstTranslation.Concat(secondTranslation).ToArray();
                     }
                     if (CountOfNulls == 0)
                     {
-
+                        for (int i = 0; i < _mergeJSONViewModel.Jsons.Length; i++)
+                        {
+                            if (_mergeJSONViewModel.Jsons[i].Part == "3 person 1 part")
+                            {
+                                firstTranslation = _mergeJSONViewModel.Jsons[i].TranslatedText;
+                            }
+                            if (_mergeJSONViewModel.Jsons[i].Part == "3 person 2 part")
+                            {
+                                secondTranslation = _mergeJSONViewModel.Jsons[i].TranslatedText;
+                            }
+                            if (_mergeJSONViewModel.Jsons[i].Part == "3 person 3 part")
+                            {
+                                thirdTranslation = _mergeJSONViewModel.Jsons[i].TranslatedText;
+                            }
+                        }
+                        fullTranslation = firstTranslation.Concat(secondTranslation).Concat(thirdTranslation).ToArray();
                     }
 
 

@@ -134,12 +134,12 @@
                 HorizontalAlignment="Center"
                 FontSize="25"
                 FontWeight="Bold"
-                Foreground="#FFD8D8D8">
-                <Run Text="{Binding CurrentSelectedIndex, UpdateSourceTrigger=PropertyChanged}" />
+                Foreground="#FFD8D8D8"
+                Visibility="{Binding CounterVisibility}">
+                <Run Text="{Binding CounterCurrentLine, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
                 <Run Text="/" />
-                <Run Text="{Binding CountOfSubs, UpdateSourceTrigger=PropertyChanged}" />
+                <Run Text="{Binding CounterCountOfAllLines, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
             </TextBlock>
         </StackPanel>
-
     </Grid>
 </UserControl>

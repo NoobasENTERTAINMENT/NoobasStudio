@@ -15,7 +15,6 @@ namespace NoobasStudio.Models
                         yourPart.Add(subs[i]);
                     break;
                 case "2 person 2 part":
-                    // int count = subs.Count % 2 == 0 ? subs.Count + 1 : subs.Count;
                     for (int i = subs.Count / 2; i < subs.Count; i++)
                         yourPart.Add(subs[i]);
                     break;
@@ -28,7 +27,7 @@ namespace NoobasStudio.Models
                         yourPart.Add(subs[i]);
                     break;
                 case "3 person 3 part":
-                    for (int i = subs.Count / 3 * 2; i < subs.Count / 3 * 3; i++)
+                    for (int i = subs.Count / 3 * 2; i < subs.Count; i++)
                         yourPart.Add(subs[i]);
                     break;
             }

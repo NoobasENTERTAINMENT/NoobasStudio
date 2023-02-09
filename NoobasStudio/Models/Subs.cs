@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Windows;
 
 namespace NoobasStudio.Models
 {
@@ -21,7 +22,7 @@ namespace NoobasStudio.Models
             ofd.Title = "Load subtitles";
             ofd.RestoreDirectory = true;
             ofd.ShowDialog();
-            
+
             string FilePath = ofd.FileName;
             FileInfo file = new FileInfo(FilePath);
 
@@ -43,9 +44,8 @@ namespace NoobasStudio.Models
                     SubsText = GetSubsFromRTF(FilePath);
                     break;
             }
-            
-            return SubsText;
 
+            return SubsText;
         }
 
         private List<string> GetSubsFromRTF(string filePath)
@@ -75,6 +75,7 @@ namespace NoobasStudio.Models
             object miss = System.Reflection.Missing.Value;
             object path = FilePath;
             object readOnly = true;
+            bool isCyrillic = false;
             Microsoft.Office.Interop.Word.Document docs = word.Documents.Open(ref path, ref miss, ref readOnly, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss);
 
             for (int i = 0; i < docs.Paragraphs.Count; i++)
@@ -86,7 +87,22 @@ namespace NoobasStudio.Models
             }
 
             SubsText = SubsText.Where(x => x != "").ToList();
-           
+
+            foreach (string line in SubsText)
+            {
+                if (IsRu(line))
+                {
+                    isCyrillic = true;
+                    break;
+                }
+                else isCyrillic = false;
+            }
+
+            if (isCyrillic || SubsText == null || SubsText.Count == 0)
+            {
+                throw new InvalidSubsException();
+            }
+
             return SubsText;
         }
 
