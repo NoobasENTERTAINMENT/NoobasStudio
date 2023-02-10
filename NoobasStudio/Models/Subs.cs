@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Shapes;
 
 namespace NoobasStudio.Models
 {
@@ -55,17 +56,26 @@ namespace NoobasStudio.Models
 
         private List<string> GetSubsFromPDF(string FilePath)
         {
-            List<string> SubsText = new List<string>();
             using (PdfReader reader = new PdfReader(FilePath))
             {
+                StringBuilder text = new StringBuilder();
+                ITextExtractionStrategy Strategy = new iTextSharp.text.pdf.parser.LocationTextExtractionStrategy();
+                List<string> SubsText = new List<string>();
                 for (int i = 1; i <= reader.NumberOfPages; i++)
                 {
-                    SubsText.Add(PdfTextExtractor.GetTextFromPage(reader, i));
-                }
-            }
-            SubsText = SubsText.Where(x => x != "").ToList();
+                    string page = "";
 
-            return SubsText;
+                    page = PdfTextExtractor.GetTextFromPage(reader, i, Strategy);
+                    string[] lines = page.Split('\n');
+                    foreach (string line in lines)
+                    {
+                        if (line.Trim() == null || line.Trim() == String.Empty)
+                            continue;
+                        SubsText.Add(line);
+                    }
+                }
+                return SubsText;
+            }
         }
 
         private List<string> GetSubsFromWord(string FilePath)
