@@ -39,6 +39,8 @@
                     Height="340"
                     Margin="10"
                     Background="{StaticResource Black}"
+                    BorderBrush="#FFFF3C1D"
+                    BorderThickness="2"
                     CornerRadius="50"
                     Effect="{StaticResource MaterialDesignElevationShadow1}">
                     <Grid>

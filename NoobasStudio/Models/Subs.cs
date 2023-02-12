@@ -45,13 +45,42 @@ namespace NoobasStudio.Models
                     SubsText = GetSubsFromRTF(FilePath);
                     break;
             }
-
+            SubsText = SplitLongString(SubsText);
             return SubsText;
+        }
+
+        private List<string> SplitLongString(List<string> subsText)
+        {
+            string AllText = null;
+            int SpaceCount = 0;
+            List<string> result = new List<string>();
+            foreach (string line in subsText)
+            {
+                if (line.Length > 45)
+                {
+                    AllText = line;
+                    for (int i = 0; i < AllText.Length; i++)
+                    {
+                        if (AllText[i] == ' ')
+                        {
+                            SpaceCount++;
+                            if (SpaceCount == 6)
+                            {
+                                AllText = AllText.Remove(i, 1).Insert(i, '\n'.ToString()); 
+                                SpaceCount = 0;
+                            }
+                        }
+                    }
+                }
+                result = AllText.Split('\n').ToList();
+            }
+            return result;
+
         }
 
         private List<string> GetSubsFromRTF(string filePath)
         {
-            throw new NotImplementedException();
+            return GetSubsFromWord(filePath);
         }
 
         private List<string> GetSubsFromPDF(string FilePath)
@@ -59,21 +88,32 @@ namespace NoobasStudio.Models
             using (PdfReader reader = new PdfReader(FilePath))
             {
                 StringBuilder text = new StringBuilder();
-                ITextExtractionStrategy Strategy = new iTextSharp.text.pdf.parser.LocationTextExtractionStrategy();
                 List<string> SubsText = new List<string>();
+                bool isCyrillic = false;
                 for (int i = 1; i <= reader.NumberOfPages; i++)
                 {
                     string page = "";
-
-                    page = PdfTextExtractor.GetTextFromPage(reader, i, Strategy);
-                    string[] lines = page.Split('\n');
+                    page = PdfTextExtractor.GetTextFromPage(reader, i);
+                    string[] lines = page.Split('\n').Where(x => x != "" && x.Trim() != String.Empty).ToArray();
                     foreach (string line in lines)
-                    {
-                        if (line.Trim() == null || line.Trim() == String.Empty)
-                            continue;
                         SubsText.Add(line);
-                    }
                 }
+
+                foreach (string line in SubsText)
+                {
+                    if (IsRu(line))
+                    {
+                        isCyrillic = true;
+                        break;
+                    }
+                    else isCyrillic = false;
+                }
+
+                if (isCyrillic || SubsText == null || SubsText.Count == 0)
+                {
+                    throw new InvalidSubsException();
+                }
+
                 return SubsText;
             }
         }

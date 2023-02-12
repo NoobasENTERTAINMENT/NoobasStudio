@@ -34,6 +34,11 @@ namespace NoobasStudio.Commands
                 MessageBox.Show("Cyrillic and empty file are not allowed", "Loading subtitles error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            catch (ArgumentException)
+            {
+                TerminateWordProcess(aProcWrd);
+                return;
+            }
             catch (Exception)
             {
                 TerminateWordProcess(aProcWrd);
