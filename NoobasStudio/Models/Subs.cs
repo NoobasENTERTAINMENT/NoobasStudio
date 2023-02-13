@@ -45,38 +45,48 @@ namespace NoobasStudio.Models
                     SubsText = GetSubsFromRTF(FilePath);
                     break;
             }
-            /*SubsText = SplitLongString(SubsText);*/
+            SubsText = SplitLongString(SubsText);
             return SubsText;
         }
 
-        /*private List<string> SplitLongString(List<string> subsText)
+        private List<string> SplitLongString(List<string> subsText)
         {
-            string AllText = null;
+            string LongLine = null;
             int SpaceCount = 0;
+
             List<string> result = new List<string>();
-            foreach (string line in subsText)
+            foreach (string line in subsText.ToArray())
             {
                 if (line.Length > 45)
                 {
-                    AllText = line;
-                    for (int i = 0; i < AllText.Length; i++)
+                    int indexOfLongLine = subsText.IndexOf(line);
+                    LongLine = line;
+                    for (int i = 0; i < LongLine.Length; i++)
                     {
-                        if (AllText[i] == ' ')
+                        if (LongLine[i] == ' ')
                         {
                             SpaceCount++;
                             if (SpaceCount == 6)
                             {
-                                AllText = AllText.Remove(i, 1).Insert(i, '\n'.ToString()); 
+                                LongLine = LongLine.Remove(i, 1).Insert(i, '\n'.ToString()); 
                                 SpaceCount = 0;
                             }
                         }
                     }
-                }
-                result = AllText.Split('\n').ToList();
-            }
-            return result;
+                    result = LongLine.Split('\n').ToList();
 
-        }*/
+                    int indexOfLastResultElem = result.Count - 1;
+                    subsText.RemoveAt(indexOfLongLine);
+
+                    foreach (string resultElem in result)
+                    {
+                        subsText.Insert(indexOfLongLine, resultElem);
+                        indexOfLongLine++;
+                    }               
+                }
+            }
+            return subsText.Where(x => x != String.Empty && x != null).ToList();
+        }
 
         private List<string> GetSubsFromRTF(string filePath)
         {

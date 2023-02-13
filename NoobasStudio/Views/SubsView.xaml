@@ -54,6 +54,7 @@
                                 MaxHeight="{Binding HeightListBox}"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
+                                FontSize="{Binding FontSize, UpdateSourceTrigger=PropertyChanged}"
                                 IsHitTestVisible="False"
                                 IsSynchronizedWithCurrentItem="True"
                                 ItemsSource="{Binding YourPart, UpdateSourceTrigger=PropertyChanged}"
@@ -71,7 +72,6 @@
                                                 <ScaleTransform />
                                             </Setter.Value>
                                         </Setter>
-                                        <Setter Property="FontSize" Value="{Binding FontSize, UpdateSourceTrigger=PropertyChanged}" />
                                         <Style.Triggers>
 
                                             <Trigger Property="IsSelected" Value="True">

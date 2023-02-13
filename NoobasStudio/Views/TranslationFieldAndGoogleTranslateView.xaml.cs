@@ -24,5 +24,10 @@ namespace NoobasStudio.Views
         {
             InitializeComponent();
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            TranslationTB.Focus();
+        }
     }
 }

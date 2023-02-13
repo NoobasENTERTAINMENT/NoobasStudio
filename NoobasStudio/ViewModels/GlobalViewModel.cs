@@ -32,7 +32,7 @@ namespace NoobasStudio.ViewModels
             SwapLanguageCommand = new SwapLanguageCommand(this);
             ClipboardCommand = new ClipboardCommand(this);
             MergeJsonsCommand = new MergeJsonsCommand();
-            FOVLinesCommand = new FOVLinesCommand();
+            FOVLinesCommand = new FOVLinesCommand(this);
         }
 
 
@@ -299,17 +299,16 @@ namespace NoobasStudio.ViewModels
             }
         }
 
-        private int heightListBox = 130;
-
+        private int _heightListBox = 130;
         public int HeightListBox
         {
             get 
             {
-                return heightListBox; 
+                return _heightListBox; 
             }
             set 
             {
-                heightListBox = value;
+                _heightListBox = value;
                 OnPropertyChanged();
             }
         }
@@ -322,7 +321,7 @@ namespace NoobasStudio.ViewModels
             set
             {
                 _fontSize = value;
-                OnPropertyChanged(nameof(FontSize));
+                OnPropertyChanged();
             }
         }
 
