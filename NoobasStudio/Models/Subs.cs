@@ -45,11 +45,11 @@ namespace NoobasStudio.Models
                     SubsText = GetSubsFromRTF(FilePath);
                     break;
             }
-            SubsText = SplitLongString(SubsText);
+            /*SubsText = SplitLongString(SubsText);*/
             return SubsText;
         }
 
-        private List<string> SplitLongString(List<string> subsText)
+        /*private List<string> SplitLongString(List<string> subsText)
         {
             string AllText = null;
             int SpaceCount = 0;
@@ -76,7 +76,7 @@ namespace NoobasStudio.Models
             }
             return result;
 
-        }
+        }*/
 
         private List<string> GetSubsFromRTF(string filePath)
         {

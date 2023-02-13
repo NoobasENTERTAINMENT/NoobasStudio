@@ -1,5 +1,6 @@
 ﻿using NoobasStudio.Commands;
 using NoobasStudio.Commands.MenuCommands;
+using NoobasStudio.Commands.MenuCommands.Edit;
 using NoobasStudio.Commands.MenuCommands.File;
 using NoobasStudio.Commands.MenuCommands.Project;
 using NoobasStudio.Commands.Navigation;
@@ -31,6 +32,7 @@ namespace NoobasStudio.ViewModels
             SwapLanguageCommand = new SwapLanguageCommand(this);
             ClipboardCommand = new ClipboardCommand(this);
             MergeJsonsCommand = new MergeJsonsCommand();
+            FOVLinesCommand = new FOVLinesCommand();
         }
 
 
@@ -49,6 +51,7 @@ namespace NoobasStudio.ViewModels
         public ICommand SwapLanguageCommand { get; }
         public ICommand ClipboardCommand { get; }
         public ICommand MergeJsonsCommand { get; }
+        public ICommand FOVLinesCommand { get; }
 
 
         private readonly Translator translator = new Translator();
@@ -295,6 +298,34 @@ namespace NoobasStudio.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        private int heightListBox = 130;
+
+        public int HeightListBox
+        {
+            get 
+            {
+                return heightListBox; 
+            }
+            set 
+            {
+                heightListBox = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private double _fontSize = 25;
+
+        public double FontSize
+        {
+            get { return _fontSize; }
+            set
+            {
+                _fontSize = value;
+                OnPropertyChanged(nameof(FontSize));
+            }
+        }
+
         public Visibility CounterVisibility => Subs == null ? Visibility.Hidden : Visibility.Visible;
         public int CounterCurrentLine => CurrentSelectedIndex + 1;
         public int CounterCountOfAllLines => CountOfSubs + 1;

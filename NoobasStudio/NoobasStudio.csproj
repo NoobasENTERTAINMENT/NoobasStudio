@@ -216,6 +216,7 @@
     <Compile Include="Behaviors\FadeWindowBehavior.cs" />
     <Compile Include="Commands\AnvilCommands\LoadToCellJsonCommand.cs" />
     <Compile Include="Commands\AnvilCommands\UnloadFinalJsonCommand.cs" />
+    <Compile Include="Commands\MenuCommands\Edit\FOVLinesCommand.cs" />
     <Compile Include="Commands\MenuCommands\File\MergeJsonsCommand.cs" />
     <Compile Include="Commands\MenuCommands\Project\LoadProjectCommand.cs" />
     <Compile Include="Commands\Translator\ClipboardCommand.cs" />

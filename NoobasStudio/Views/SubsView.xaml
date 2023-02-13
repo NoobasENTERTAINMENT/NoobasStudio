@@ -51,7 +51,7 @@
 
                             <ListBox
                                 x:Name="SubsListView"
-                                MaxHeight="130"
+                                MaxHeight="{Binding HeightListBox}"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 IsHitTestVisible="False"
@@ -71,7 +71,7 @@
                                                 <ScaleTransform />
                                             </Setter.Value>
                                         </Setter>
-                                        <Setter Property="FontSize" Value="25" />
+                                        <Setter Property="FontSize" Value="{Binding FontSize, UpdateSourceTrigger=PropertyChanged}" />
                                         <Style.Triggers>
 
                                             <Trigger Property="IsSelected" Value="True">

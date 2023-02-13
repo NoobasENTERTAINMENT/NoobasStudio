@@ -82,6 +82,17 @@
                                     Header="Part №3" />
                             </MenuItem>
                         </MenuItem>
+                        <MenuItem Header="FOV">
+                            <MenuItem Header="3 lines"
+                                      CommandParameter="3"
+                                      Command="{Binding FOVLinesCommand}"/>
+                            <MenuItem Header="5 lines"
+                                      CommandParameter="5"
+                                      Command="{Binding FOVLinesCommand}"/>
+                            <MenuItem Header="7 lines"
+                                      CommandParameter="7"
+                                      Command="{Binding FOVLinesCommand}"/>
+                        </MenuItem>
                     </MenuItem>
                     <MenuItem
                         Command="{Binding MergeJsonsCommand}"
