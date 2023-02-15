@@ -219,6 +219,7 @@
     <Compile Include="Commands\MenuCommands\Edit\FOVLinesCommand.cs" />
     <Compile Include="Commands\MenuCommands\File\MergeJsonsCommand.cs" />
     <Compile Include="Commands\MenuCommands\Project\LoadProjectCommand.cs" />
+    <Compile Include="Commands\MenuCommands\Subtitles\LoadSubsByURLCommand.cs" />
     <Compile Include="Commands\Translator\ClipboardCommand.cs" />
     <Compile Include="Commands\MenuCommands\File\ExportTxtCommand.cs" />
     <Compile Include="Commands\Navigation\CloseCommand.cs" />

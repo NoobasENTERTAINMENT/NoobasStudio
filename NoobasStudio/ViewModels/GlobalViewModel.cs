@@ -3,6 +3,7 @@ using NoobasStudio.Commands.MenuCommands;
 using NoobasStudio.Commands.MenuCommands.Edit;
 using NoobasStudio.Commands.MenuCommands.File;
 using NoobasStudio.Commands.MenuCommands.Project;
+using NoobasStudio.Commands.MenuCommands.Subtitles;
 using NoobasStudio.Commands.Navigation;
 using NoobasStudio.Core;
 using NoobasStudio.Models;
@@ -33,6 +34,7 @@ namespace NoobasStudio.ViewModels
             ClipboardCommand = new ClipboardCommand(this);
             MergeJsonsCommand = new MergeJsonsCommand();
             FOVLinesCommand = new FOVLinesCommand(this);
+            LoadSubsByURLCommand = new LoadSubsByURLCommand(this);
         }
 
 
@@ -52,6 +54,7 @@ namespace NoobasStudio.ViewModels
         public ICommand ClipboardCommand { get; }
         public ICommand MergeJsonsCommand { get; }
         public ICommand FOVLinesCommand { get; }
+        public ICommand LoadSubsByURLCommand { get; }
 
 
         private readonly Translator translator = new Translator();

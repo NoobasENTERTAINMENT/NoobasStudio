@@ -47,7 +47,11 @@
                         Header="Subtitles">
                         <MenuItem Header="Load">
                             <MenuItem Command="{Binding LoadSubsCommand}" Header="As a .txt file" />
-                            <TextBox materialDesign:HintAssist.Hint="As a URL from YouTube" ToolTip="Get subtitles from YouTube video" />
+                            <TextBox x:Name="TBUrl"  materialDesign:HintAssist.Hint="As a URL from YouTube" ToolTip="Get subtitles from YouTube video" >
+                                <TextBox.InputBindings>
+                                    <KeyBinding Key="Return" Command="{Binding LoadSubsByURLCommand}" CommandParameter="{Binding ElementName=TBUrl, Path=Text}" />
+                                </TextBox.InputBindings>
+                            </TextBox>
                         </MenuItem>
                     </MenuItem>
                     <MenuItem
